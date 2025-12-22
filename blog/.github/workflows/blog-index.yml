@@ -1,0 +1,47 @@
+name: Auto-update blog posts list
+
+on:
+  push:
+    paths:
+      - "blog/*.html"
+
+permissions:
+  contents: write
+
+jobs:
+  build-posts-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate blog/posts.json from blog/*.html
+        run: |
+          python3 - << 'PY'
+          import glob, json, re, os
+
+          posts = []
+          for path in sorted(glob.glob("blog/*.html")):
+            fname = os.path.basename(path)
+            if fname == "index.html":
+              continue
+            with open(path, "r", encoding="utf-8", errors="ignore") as f:
+              html = f.read()
+
+            m = re.search(r"<title>\s*(.*?)\s*</title>", html, re.IGNORECASE | re.DOTALL)
+            title = m.group(1).strip() if m else fname.replace(".html","")
+
+            title = re.sub(r"\s+", " ", title)
+            posts.append({"title": title, "file": fname})
+
+          with open("blog/posts.json", "w", encoding="utf-8") as f:
+            json.dump(posts, f, ensure_ascii=False, indent=2)
+          PY
+
+      - name: Commit posts.json if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add blog/posts.json
+          git commit -m "Auto-update blog/posts.json" || exit 0
+          git push
