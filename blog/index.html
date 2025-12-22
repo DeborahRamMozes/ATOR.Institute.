@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog · ATOR Institute</title>
+  <meta charset="UTF-8">
+  <title>Blog | ATOR Institute</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
-      background:#0e0e0e;
-      color:#eaeaea;
+      margin: 0;
+      background: #0e0e0e;
+      color: #eaeaea;
       font-family: Georgia, "Times New Roman", serif;
-      max-width:760px;
-      margin:80px auto;
-      padding:0 24px;
-      line-height:1.75;
+      line-height: 1.75;
+      max-width: 760px;
+      margin: 80px auto;
+      padding: 0 24px;
     }
 
     h1 {
-      font-size:2.4rem;
-      font-weight:400;
-      margin-bottom:.4em;
+      font-size: 2.2rem;
+      font-weight: normal;
+      margin-bottom: 0.4em;
     }
 
-    p.intro {
-      color:#b0b0b0;
-      margin-bottom:3em;
+    .subtitle {
+      color: #9a9a9a;
+      margin-bottom: 3em;
     }
 
     ul {
-      list-style:none;
-      padding:0;
+      list-style: none;
+      padding: 0;
     }
 
     li {
-      margin:1.6em 0;
+      margin: 1.6em 0;
     }
 
     a {
-      color:#ffffff;
-      text-decoration:none;
-      border-bottom:1px solid rgba(255,255,255,.25);
+      color: #ffffff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 2px;
     }
 
     a:hover {
-      border-bottom-color:#ffffff;
+      border-bottom-color: #ffffff;
     }
 
     footer {
-      margin-top:6em;
-      font-size:.85rem;
-      color:#777;
-      font-style:italic;
+      margin-top: 6em;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #6f6f6f;
     }
   </style>
 </head>
@@ -58,37 +60,18 @@
 <body>
 
   <h1>Blog</h1>
-
-  <p class="intro">
+  <div class="subtitle">
     Research notes, black papers, field logs.<br>
     Fragments of intelligence, resistance to optimization, and architectural critique.
-  </p>
+  </div>
 
-  <ul id="blog-list"></ul>
+  <ul id="post-list"></ul>
 
   <footer>
     Di antara rupa dan niskala, jejak selalu ditinggalkan bukan untuk dibaca, melainkan untuk dirasakan.
   </footer>
 
-  <script>
-    fetch('posts.json')
-      .then(r => r.json())
-      .then(posts => {
-        const list = document.getElementById('blog-list');
-        posts.forEach(p => {
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = p.file;
-          a.textContent = p.title;
-          li.appendChild(a);
-          list.appendChild(li);
-        });
-      })
-      .catch(e => {
-        document.getElementById('blog-list').innerHTML =
-          '<li style="color:#888">Post index failed to load.</li>';
-      });
-  </script>
+  <script src="blog.js"></script>
 
 </body>
 </html>
