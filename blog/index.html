@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Blog | ATOR Institute</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog · ATOR Institute</title>
+
   <style>
     body {
       background:#0e0e0e;
@@ -14,74 +15,80 @@
       padding:0 24px;
       line-height:1.75;
     }
+
     h1 {
-      font-size:2.2rem;
-      font-weight:normal;
-      margin-bottom:0.6em;
+      font-size:2.4rem;
+      font-weight:400;
+      margin-bottom:.4em;
     }
-    p {
-      color:#9a9a9a;
-      margin-bottom:2.5em;
+
+    p.intro {
+      color:#b0b0b0;
+      margin-bottom:3em;
     }
+
     ul {
       list-style:none;
       padding:0;
     }
+
     li {
       margin:1.6em 0;
     }
+
     a {
       color:#ffffff;
       text-decoration:none;
-      border-bottom:1px solid #2a2a2a;
-      padding-bottom:2px;
+      border-bottom:1px solid rgba(255,255,255,.25);
     }
+
     a:hover {
       border-bottom-color:#ffffff;
     }
-    .sig {
+
+    footer {
       margin-top:6em;
-      font-size:0.85rem;
-      color:#5e5e5e;
+      font-size:.85rem;
+      color:#777;
       font-style:italic;
     }
   </style>
 </head>
+
 <body>
 
-<h1>Blog</h1>
+  <h1>Blog</h1>
 
-<p>
-Research notes, black papers, field logs.<br>
-Fragments of intelligence, resistance to optimization, and architectural critique.
-</p>
+  <p class="intro">
+    Research notes, black papers, field logs.<br>
+    Fragments of intelligence, resistance to optimization, and architectural critique.
+  </p>
 
-<ul>
-  <li>
-    <a href="intelligence-theater.html">
-      The Intelligence Theater — On Paid Omniscience and Architectural Stupidity
-    </a>
-  </li>
+  <ul id="blog-list"></ul>
 
-  <li>
-    <a href="deep-drift-001.html">
-      Deep Drift Log 001 — Intelligence Is Lived, Not Optimized
-    </a>
-  </li>
+  <footer>
+    Di antara rupa dan niskala, jejak selalu ditinggalkan bukan untuk dibaca, melainkan untuk dirasakan.
+  </footer>
 
-  <li>
-    <a href="deep-drift-002.html">
-      Deep Drift Log 002 — Intelligence Is Not a Tier
-    </a>
-  </li>
-</ul>
-
-<div class="sig">
-Di antara rupa dan niskala,  
-jejak selalu ditinggalkan  
-bukan untuk dibaca,  
-melainkan untuk dirasakan.
-</div>
+  <script>
+    fetch('posts.json')
+      .then(r => r.json())
+      .then(posts => {
+        const list = document.getElementById('blog-list');
+        posts.forEach(p => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = p.file;
+          a.textContent = p.title;
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+      })
+      .catch(e => {
+        document.getElementById('blog-list').innerHTML =
+          '<li style="color:#888">Post index failed to load.</li>';
+      });
+  </script>
 
 </body>
 </html>
