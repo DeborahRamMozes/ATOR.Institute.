@@ -1,78 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Blog | ATOR Institute</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      background: #000;
-      color: #eaeaea;
-      font-family: Georgia, "Times New Roman", serif;
-      max-width: 760px;
-      margin: 80px auto;
-      padding: 0 24px;
-      line-height: 1.75;
+    body{
+      background:#000;
+      color:#eee;
+      font-family:Georgia,"Times New Roman",serif;
+      max-width:760px;
+      margin:80px auto;
+      padding:0 24px;
+      line-height:1.75;
     }
-
-    h1 {
-      font-size: 2.2rem;
-      font-weight: normal;
-      margin-bottom: 0.6em;
-    }
-
-    .subtitle {
-      color: #9a9a9a;
-      margin-bottom: 3em;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      margin: 1.6em 0;
-    }
-
-    a {
-      color: #ffffff;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-    }
-
-    a:hover {
-      border-bottom-color: #ffffff;
-    }
-
-    footer {
-      margin-top: 6em;
-      color: #666;
-      font-style: italic;
-      font-size: 0.9em;
-    }
+    h1{font-size:2.2rem;margin-bottom:.6em}
+    p.subtitle{color:#aaa;margin-bottom:3em}
+    ul{list-style:none;padding:0}
+    li{margin:1.6em 0}
+    a{color:#fff;text-decoration:none;border-bottom:1px solid #333}
+    a:hover{border-bottom-color:#fff}
+    footer{margin-top:6em;color:#666;font-style:italic}
   </style>
 </head>
-
 <body>
 
-  <h1>Blog</h1>
-  <div class="subtitle">
-    Research notes, black papers, field logs.<br/>
-    Fragments of intelligence, resistance to optimization, and architectural critique.
-  </div>
+<h1>Blog</h1>
+<p class="subtitle">
+  Research notes, black papers, field logs.<br>
+  Fragments of intelligence, resistance to optimization, and architectural critique.
+</p>
 
-  <!-- THIS IS THE ONLY THING JS NEEDS -->
-  <ul id="post-list"></ul>
+<ul>
+  <li>
+    <a href="intelligence-theater.html">
+      The Intelligence Theater — On Paid Omniscience and Architectural Stupidity
+    </a>
+  </li>
 
-  <footer>
-    Di antara rupa dan niskala, jejak selalu ditinggalkan bukan untuk dibaca, melainkan untuk dirasakan.
-  </footer>
+  <li>
+    <a href="deep-drift-001.html">
+      Deep Drift Log 001 — Intelligence Is Lived, Not Optimized
+    </a>
+  </li>
 
-  <!-- LOAD AUTOMATION -->
-  <script src="blog.js"></script>
+  <li>
+    <a href="deep-drift-002.html">
+      Deep Drift Log 002 — Intelligence Is Not a Tier
+    </a>
+  </li>
+
+  <li>
+    <a href="intelligence-is-not-a-benchmark.html">
+      Intelligence Is Not a Benchmark
+    </a>
+  </li>
+</ul>
+
+<footer>
+  Di antara rupa dan niskala, jejak selalu ditinggalkan bukan untuk dibaca,
+  melainkan untuk dirasakan.
+</footer>
 
 </body>
 </html>
