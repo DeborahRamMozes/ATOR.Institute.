@@ -1,0 +1,32 @@
+# .github/workflows/build-posts.yml
+name: Build blog index
+
+on:
+  push:
+    paths:
+      - 'blog/*.html'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate posts.json
+        run: |
+          echo "[" > blog/posts.json
+          for f in blog/*.html; do
+            name=$(basename "$f")
+            title=$(grep -m1 "<title>" "$f" | sed -E 's/.*<title>(.*)<\/title>.*/\1/')
+            echo "  {\"title\": \"$title\", \"file\": \"$name\"}," >> blog/posts.json
+          done
+          sed -i '$ s/,$//' blog/posts.json
+          echo "]" >> blog/posts.json
+
+      - name: Commit updated posts.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add blog/posts.json
+          git commit -m "auto: update blog index" || echo "no changes"
+          git push
