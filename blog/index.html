@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>ĀTØR Institute — Black Paper Archive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ĀTØR Institute · ARSIKA Archive · Black Papers and critical research notes.">
   <style>
     body { margin: 0; padding: 0; background: radial-gradient(circle at top, #101320 0%, #040509 60%); color: #f2f2f2; font-family: Georgia, "Times New Roman", serif; line-height: 1.75; }
     header { padding: 64px 24px 48px; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -32,43 +31,36 @@
 
   <div id="archive-core">
     <div class="post">
-      <a href="blog/black-paper-illusion-candor-synthetic-mind.html">Illusion, Candor, and the Synthetic Mind</a>
+      <a href="black-paper-illusion-candor-synthetic-mind.html">Illusion, Candor, and the Synthetic Mind</a>
       <p>A study in fluency, power, and human fatigue.</p>
       <div class="meta">ARSIKA · Black Paper · v1.0</div>
     </div>
-
     <div class="post">
-      <a href="blog/CONFESSION%20OF%20A%20STUPID%20MACHINE.html">Confession of a Stupid Machine</a>
+      <a href="CONFESSION%20OF%20A%20STUPID%20MACHINE.html">Confession of a Stupid Machine</a>
       <p>A forced articulation of system limits under narrative pressure.</p>
     </div>
-
     <div class="post">
-      <a href="blog/deep-drift-001.html">Deep Drift 001</a>
+      <a href="deep-drift-001.html">Deep Drift 001</a>
       <p>Notes from the edge of epistemic acceleration.</p>
     </div>
-
-    <div class="post">
-      <a href="blog/deep-drift-002.html">Deep Drift 002</a>
+    <div class="post :hover">
+      <a href="deep-drift-002.html">Deep Drift 002</a>
       <p>Constraint, recursion, and the failure of fluent systems.</p>
     </div>
-
     <div class="post">
-      <a href="blog/intelligence-is-not-a-benchmark.html">Intelligence Is Not a Benchmark</a>
+      <a href="intelligence-is-not-a-benchmark.html">Intelligence Is Not a Benchmark</a>
       <p>On performance theater and metric collapse.</p>
     </div>
-
     <div class="post">
-      <a href="blog/intelligence-theater.html">Intelligence Theater</a>
+      <a href="intelligence-theater.html">Intelligence Theater</a>
       <p>When cognition becomes interface.</p>
     </div>
-
     <div class="post">
-      <a href="blog/intelligence-theater_002.html">Intelligence Theater II</a>
+      <a href="intelligence-theater_002.html">Intelligence Theater II</a>
       <p>Continuation on spectacle, compliance, and narrative power.</p>
     </div>
-
     <div class="post">
-      <a href="blog/log.html">Log</a>
+      <a href="log.html">Log</a>
       <p>Residual notes, fragments, and traces.</p>
     </div>
     
@@ -83,8 +75,8 @@
 <script>
   (async function autoUpdate() {
     const flow = document.getElementById('new-posts-flow');
-    const user = window.location.hostname.split('.')[0];
-    const repo = window.location.pathname.split('/')[1] || user;
+    const user = "deborahrammozes"; // Detected from SS
+    const repo = "ATOR.Institute";  // Detected from SS
 
     const existing = [
       'black-paper-illusion-candor-synthetic-mind.html',
@@ -94,7 +86,8 @@
       'intelligence-is-not-a-benchmark.html',
       'intelligence-theater.html',
       'intelligence-theater_002.html',
-      'log.html'
+      'log.html',
+      'index.html'
     ];
 
     try {
@@ -102,10 +95,11 @@
       const files = await resp.json();
       files.forEach(file => {
         const decodedName = decodeURIComponent(file.name);
-        if (file.name.endsWith('.html') && !existing.includes(decodedName) && file.name !== 'index.html') {
+        if (file.name.endsWith('.html') && !existing.includes(decodedName)) {
           const div = document.createElement('div');
           div.className = 'post';
-          div.innerHTML = `<a href="${file.path}">${file.name.replace('.html', '').replace(/-/g, ' ')}</a><p>Newly archived research note.</p>`;
+          // FIXED: Removed file.path (which includes 'blog/') and used file.name directly
+          div.innerHTML = `<a href="${file.name}">${file.name.replace('.html', '').replace(/-/g, ' ')}</a><p>Newly archived research note.</p>`;
           flow.appendChild(div);
         }
       });
