@@ -1,18 +1,38 @@
 [
   {
-    "title": "The Intelligence Theater — On Paid Omniscience and Architectural Stupidity",
-    "file": "intelligence-theater.html"
+    "title": "*",
+    "file": "*.html"
   },
   {
-    "title": "Deep Drift Log 001 — Intelligence Is Lived, Not Optimized",
+    "title": "Confession of a Stupid Machine",
+    "file": "CONFESSION OF A STUPID MACHINE.html"
+  },
+  {
+    "title": "Illusion, Candor, and the Synthetic Mind",
+    "file": "black-paper-illusion-candor-synthetic-mind.html"
+  },
+  {
+    "title": "Deep Drift Log 001 | ATOR Institute",
     "file": "deep-drift-001.html"
   },
   {
-    "title": "Deep Drift Log 002 — Intelligence Is Not a Tier",
+    "title": "Deep Drift Log 002 | ATOR Institute",
     "file": "deep-drift-002.html"
   },
   {
     "title": "Intelligence Is Not a Benchmark",
     "file": "intelligence-is-not-a-benchmark.html"
+  },
+  {
+    "title": "The Intelligence Theater | ATOR Institute",
+    "file": "intelligence-theater.html"
+  },
+  {
+    "title": "Intelligence Theater",
+    "file": "intelligence-theater_002.html"
+  },
+  {
+    "title": "Blog | ATOR Institute",
+    "file": "log.html"
   }
 ]
