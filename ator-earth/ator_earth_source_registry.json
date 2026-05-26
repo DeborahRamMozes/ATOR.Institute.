@@ -1,0 +1,16 @@
+{
+  "project": "ATOR Earth",
+  "status": "regional research node inventory",
+  "rule": "Regional node is not final mine-level proof. Site-level evidence comes next.",
+  "sources": {
+    "USGS Mineral Resources Program": "https://www.usgs.gov/programs/mineral-resources-program",
+    "USGS Mineral Commodity Summaries": "https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries",
+    "USGS Indonesia Mineral Yearbook 2023": "https://pubs.usgs.gov/myb/vol3/2023/myb3-2023-indonesia.pdf",
+    "DOE Critical Minerals and Materials": "https://www.energy.gov/cmm/what-are-critical-minerals-and-materials",
+    "CSET Semiconductor Supply Chain": "https://cset.georgetown.edu/wp-content/uploads/The-Semiconductor-Supply-Chain-Issue-Brief-1.pdf",
+    "MP Materials Mountain Pass": "https://mpmaterials.com/mountain-pass",
+    "Glencore DRC": "https://www.glencore.cd/en",
+    "SQM Chile Operations": "https://sqm.com/en/acerca-de-sqm/informacion-corporativa/nuestras-faenas/",
+    "Bangka Belitung REE study": "https://ijog.geologi.esdm.go.id/index.php/IJOG/article/view/861"
+  }
+}
