@@ -59,14 +59,16 @@ Cosmotechnical layering systems that structure meaning,
 ethics, metaphysics, and symbolic logic across the entire ecosystem.
 
 ### **DAST — Departemen Advokasi Seni, Desain dan L' Tissage Seni-Teknologi**
-The art-advocacy department of ĀTØR Institute, built around three laboratories:
-- **Lab Advokasi & Hukum Seni** — fair contracts, moral and economic rights, mediation, and artisan advocacy
-- **Lab Authorship & Atelier Transparan** — authorship audits, atelier transparency, and academic creation ethics
-- **Lab L' Tissage Seni-Teknologi** — ethical AI protocols, collaborative provenance, and transparent human-machine-artisan production
+**Tagline: Tangan yang bekerja harus punya nama.**
 
-**Department tagline: “Tangan yang bekerja harus punya nama.”**
+DAST is the advocacy department for art, design, authorship, fair artisan practice, and ethical art-technology provenance.
 
-DAST materials are maintained in [`ator-dast/`](ator-dast/).
+Its three labs are:
+- Lab Advokasi & Hukum Seni
+- Lab Authorship & Atelier Transparan
+- Lab L' Tissage Seni-Teknologi
+
+DAST documents, protocols, contracts, and case studies live in [`ator-dast/`](ator-dast/).
 
 ---
 
@@ -98,9 +100,7 @@ THE New alphabetical that create based on Le Tissage x ACLS x Lilit Parasit theo
 - multi-project orchestration  
 - philosophical architecture  
 - synthetic–human co-creation  
-- art, design, and artisan rights advocacy
-- authorship and atelier transparency audits
-- ethical AI and provenance protocols for art-technology collaboration
+- art, design, and authorship advocacy through DAST
 
 ---
 
