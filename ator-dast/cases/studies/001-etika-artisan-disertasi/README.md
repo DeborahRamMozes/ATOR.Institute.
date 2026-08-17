@@ -251,4 +251,6 @@ Studi kasus ini dikembangkan dari dokumen riset awal `riset-etika-artisan-disert
 
 Per 17 Agustus 2026, bagian inti tentang ISI Surakarta, CAA, Courtauld, UU Hak Cipta, U.S. Copyright Office, dan DJKI telah diperiksa terhadap sumber resmi yang tersedia. Beberapa proposisi dalam riset awal tetap memerlukan verifikasi lanjutan sebelum dipakai untuk tuduhan terhadap individu atau institusi tertentu.
 
+Lihat juga [`SOURCE-NOTE.md`](SOURCE-NOTE.md) untuk catatan hierarki sumber dan batas penggunaan bukti.
+
 **Dokumen ini adalah kerangka riset dan advokasi etik, bukan nasihat hukum atau putusan pelanggaran.**
