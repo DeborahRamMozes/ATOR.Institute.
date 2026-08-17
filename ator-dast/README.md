@@ -5,7 +5,7 @@
 
 Departemen advokasi pertama di Indonesia yang memastikan setiap karya seni, desain, dan karya berbasis teknologi lahir dengan jejak authorship yang jujur, transparan, dan berkeadilan.
 
-Ini adalah repo resmi untuk protokol, kontrak adil, arsip kasus, dan klinik etik disertasi penciptaan.
+Ini adalah repo resmi untuk protokol, kontrak adil, arsip kasus, studi kasus, dan klinik etik disertasi penciptaan.
 
 ## Latar Belakang
 
@@ -28,14 +28,28 @@ L' TISSAGE = menenun kembali yang terpisah: seni, desain, teknologi, dan etika.
 /contracts/ - template kontrak kerja seni berkeadilan
 /protocols/ - protokol authorship dan AI
 /cases/template/ - template laporan dugaan pelanggaran etik
+/cases/studies/ - studi kasus DAST yang telah direview
 /.github/ - issue templates
 ```
+
+## Studi Kasus
+
+### Case Study 001 — Etika Akademik Penggunaan Artisan dalam Disertasi Penciptaan Seni
+
+Kajian tentang batas antara atelier yang sah dan ghost authorship: own work, disclosure, hak moral, kontribusi kreatif, AI-assisted authorship, kontrak, kompensasi, dan provenance.
+
+Baca: [`cases/studies/001-etika-artisan-disertasi/README.md`](cases/studies/001-etika-artisan-disertasi/README.md)
+
+Prinsip temuan:
+
+> **Banyak tangan boleh. Tangan tak bernama tidak.**
 
 ## Cara Pakai
 
 1. Jika kamu artisan yang tidak dikredit atau tidak dibayar, buka `cases/template/laporan-etik-template.md` dan ikuti panduan.
 2. Jika kamu mahasiswa doktor, cek `protocols/authorship-checklist.md` sebelum sidang.
 3. Jika kamu studio/sanggar, pakai `contracts/kontrak-adil-artisan-v1.md` untuk setiap proyek.
+4. Jika kamu meneliti persoalan authorship, gunakan `cases/studies/` sebagai arsip studi kasus berbasis evidence.
 
 ## Kontribusi
 
