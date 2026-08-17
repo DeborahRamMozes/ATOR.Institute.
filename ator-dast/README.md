@@ -40,6 +40,8 @@ Kajian tentang batas antara atelier yang sah dan ghost authorship: own work, dis
 
 Baca: [`cases/studies/001-etika-artisan-disertasi/README.md`](cases/studies/001-etika-artisan-disertasi/README.md)
 
+Catatan sumber: [`cases/studies/001-etika-artisan-disertasi/SOURCE-NOTE.md`](cases/studies/001-etika-artisan-disertasi/SOURCE-NOTE.md)
+
 Prinsip temuan:
 
 > **Banyak tangan boleh. Tangan tak bernama tidak.**
