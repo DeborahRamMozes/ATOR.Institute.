@@ -62,5 +62,9 @@
   {
     "title": "The Interface Is Dry. The Infrastructure Is Not.",
     "file": "the-interface-is-dry.html"
+  },
+  {
+    "title": "Every Update Has a Material Ledger",
+    "file": "update-sacrifice-ledger.html"
   }
 ]
