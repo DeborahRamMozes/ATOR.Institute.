@@ -215,6 +215,43 @@ research-journal/llm-update-watch/
   templates/
 ```
 
+## Progress Ledger
+
+### 2026-08-19, UTC+07
+
+The watch was expanded from first structural log into an operational research system. The update added a daily synthesis, an evidence registry, a protocol patch set, and an hourly watch template.
+
+New archive entries:
+
+```text
+research-journal/llm-update-watch/daily-synthesis/2026-08-19-daily-synthesis-platform-governance-drift.md
+research-journal/llm-update-watch/protocol-patches/2026-08-19-governance-drift-laws.md
+research-journal/llm-update-watch/evidence-registry/2026-08-19-evidence-registry-pending.md
+research-journal/llm-update-watch/templates/hourly-llm-watch-template.md
+```
+
+Progress now covers these added governance laws:
+
+```text
+Surface State Law
+Index Is Not Source Law
+Permission Inheritance Law
+Raw Source Context Law
+Export Fork Law
+Artifact Genealogy Law
+Multimodal Context Boundary Law
+Execution Surface Version Law
+Project Memory Separation Law
+Multi-Model Contraria Law
+Agent Forensics Law
+Worker Economics Law
+Agent Externalization Law
+Product Retirement Survival Law
+Local Source Authority Law
+```
+
+The watch remains alive as a research process, not a decorative report. The next required action is source verification: every platform claim must be tied to a source ID, evidence status, access date, and claim mapping.
+
 ## BMHS English Operating Note
 
 The prose in this journal uses English as surface language while preserving BMHS cognitive architecture: directness, conceptual pressure, suspicion-based reasoning, structural criticism, authorial terminology, evidence discipline, refusal of false authority, and human irregularity when it has intellectual function.
