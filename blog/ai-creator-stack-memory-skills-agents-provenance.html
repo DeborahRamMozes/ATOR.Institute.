@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>When AI Stops Being a Chat: Memory, Skills, Agents, and the New Creator Stack</title>
+  <meta name="description" content="ATØR Institute Deep Drift essay on memory boundaries, skills, mini-apps, document generation, agent identity, state mutation, and provenance in emerging AI creator workflows.">
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+  <p class="back"><a href="index.html">← ATØR Institute Blog Archive</a></p>
+
+  <article>
+    <p class="meta">ATØR Institute · Deep Drift Research · 20 August 2026</p>
+    <h1>When AI Stops Being a Chat</h1>
+    <p><em>Memory, skills, agents, mini-apps, documents, and the creator stack that now sits between human intention and finished work.</em></p>
+
+    <p>The most consequential change in generative AI is no longer visible in benchmark tables. It is happening around the model. Memory can be bounded by project. Files can persist independently of a conversation. Skills can be packaged as reusable procedures. Agents can act inside documents. Spreadsheets can become read-write mini-apps. Research workspaces can be copied with some layers preserved and other layers left behind. Automated flows can acquire identities of their own.</p>
+
+    <p>The language model is still there, obviously. But treating the model as the whole system now produces the same analytical quality as describing a hospital by naming the brand of its elevator.</p>
+
+    <h2>From Conversation to Persistent Working State</h2>
+
+    <p>Recent platform changes make one distinction unavoidable: conversation history, saved memory, project context, files, retrieval, and connected sources are not the same thing. They may all feel to the user like “the system remembers,” but their architectures, boundaries, persistence rules, and failure modes differ.</p>
+
+    <p>OpenAI's recent Project changes are especially useful for research because memory boundaries can now be altered within the lifecycle of a project. A project can be placed under a stricter project-only memory boundary rather than drawing from broader remembered context. That gives Deep Drift a clean experimental design: keep the human, files, model, and question constant while changing only the memory boundary.</p>
+
+    <p>The research question is no longer merely whether the model remembers. It is whether the same work remains stable when the mechanism of remembering changes.</p>
+
+    <h2>The Input Route Has Become Part of the Computation</h2>
+
+    <p>Copy-paste once looked like the least interesting part of an AI workflow. That was convenient, and wrong. Platforms now distinguish between direct pasted text, rich formatted paste, large-paste attachments, uploaded documents, library files, project sources, and connected cloud files.</p>
+
+    <p>For Deep Drift, identical content entering through different surfaces should be treated as a controlled experiment. A heading pasted as rich text may preserve hierarchy differently from the same heading inside an attachment. A long paste that becomes a file may be retrieved differently from message text. A Drive file may be treated differently from an uploaded copy of the same document.</p>
+
+    <p>This creates a new class of failure: <strong>ingestion-channel drift</strong>. The user believes the content is the constant. The system may be treating the route as part of the instruction.</p>
+
+    <h2>Skills Are Becoming Procedural Infrastructure</h2>
+
+    <p>Prompt engineering is quietly losing its privileged status. Major platforms increasingly package reusable behavior as skills, plugins, agent instructions, connectors, and callable procedures. This matters because procedural identity can now survive separately from a particular model.</p>
+
+    <p>The relevant Deep Drift experiment is therefore not “Which model is smartest?” It is: <strong>Does the same skill preserve its procedural identity when the reasoning engine, permissions, or execution environment changes?</strong></p>
+
+    <p>A useful representation is:</p>
+
+    <pre>memory + project + skill + model + permissions + tools + runtime = observed system behavior</pre>
+
+    <p>Once this is accepted, a model name becomes an insufficient description of the system under test.</p>
+
+    <h2>Mini-Apps Turn Artifacts into Mutable Interfaces</h2>
+
+    <p>Google Sheets Canvas makes the change especially visible. A spreadsheet can now become a generated interactive interface that writes back to the source sheet. The artifact is no longer simply an output. It is an operational surface over persistent state.</p>
+
+    <pre>source data ↔ generated interface ↔ human action</pre>
+
+    <p>This creates a provenance problem that conventional document history does not fully solve. If a status value changes from OPEN to COMPLETE, did the human edit the cell directly? Did the human drag a card on the generated interface? Did an agent write the value? Did a formula change? Did imported data overwrite it?</p>
+
+    <p>The final state can be identical while the causal history is radically different.</p>
+
+    <p>Deep Drift therefore treats <strong>mutation-path provenance</strong> as a primary research object. Correct state is not enough. We need recoverable state history.</p>
+
+    <h2>Document Generation Is Baseline. Round-Trip Fidelity Is the Real Test.</h2>
+
+    <p>DOCX, PDF, XLSX, PPTX, and related file generation are rapidly becoming ordinary platform capabilities. The frontier is no longer whether a model can produce a downloadable file. The harder question is whether the artifact survives real work.</p>
+
+    <p>A proper benchmark is:</p>
+
+    <pre>generate → download → human edit → re-import → AI revise → export → reopen elsewhere</pre>
+
+    <p>Deep Drift measures semantic correctness, formatting fidelity, structural fidelity, editability, dependency survival, and provenance across that entire cycle.</p>
+
+    <p>Spreadsheet migration makes the problem obvious. A file can look correct while formulas, pivot relationships, named ranges, dependencies, or data types have silently changed. Visual similarity is not structural survival. Structural survival is not computational survival.</p>
+
+    <h2>Agent Identity Changes the Meaning of Authorship</h2>
+
+    <p>One of the most significant recent shifts is the emergence of explicit identities for automated flows. Google Workspace Studio, for example, is moving toward auditable flow identities, permissions, and machine-attributed actions. Microsoft is similarly moving from passive assistance toward app-native agents that create and alter documents, spreadsheets, and presentations.</p>
+
+    <p>This means “the user did it” is becoming an inadequate provenance statement.</p>
+
+    <p>The stronger chain is:</p>
+
+    <pre>human owner → agent/flow identity → permissions → model/skill → source → action → artifact mutation → audit record</pre>
+
+    <p>Deep Drift calls this <strong>agent identity continuity</strong>. The research question is whether that chain remains reconstructable after copying, exporting, migration, human editing, platform updates, or agent replacement.</p>
+
+    <h2>Portable Workspaces Are Not Portable Histories</h2>
+
+    <p>Recent workspace-copy features make another distinction visible. A research environment may preserve source files, generated artifacts, prompts, and configuration while leaving behind personal chat history, private notes, or later synchronization.</p>
+
+    <p>The copied workspace can therefore look complete while some of the human reasoning path that shaped it has vanished.</p>
+
+    <p>This is why Deep Drift separates:</p>
+
+    <ul>
+      <li>source portability,</li>
+      <li>artifact portability,</li>
+      <li>configuration portability,</li>
+      <li>interaction-history portability,</li>
+      <li>human-note portability,</li>
+      <li>and synchronization continuity.</li>
+    </ul>
+
+    <p>Artifact portability is not cognitive-history portability.</p>
+
+    <h2>Deep Drift: Continuity Under Transformation</h2>
+
+    <p>The platform changes now justify consolidating the research agenda around one larger construct: <strong>Continuity Under Transformation</strong>.</p>
+
+    <pre>HUMAN ORIGIN
+↓
+MEMORY / PROJECT BOUNDARY
+↓
+FILES / RETRIEVAL / CONNECTED SOURCES
+↓
+SKILL / PROCEDURE
+↓
+MODEL
+↓
+AGENT / FLOW IDENTITY
+↓
+TOOLS / PERMISSIONS
+↓
+DOCX / PDF / XLSX / PPTX / SITE / MINI-APP
+↕
+EXTERNAL EDIT
+↕
+STATE MUTATION
+↕
+MIGRATION</pre>
+
+    <p>The core benchmark families are now:</p>
+
+    <ul>
+      <li><strong>Context Continuity</strong>: memory boundaries, retrieval paths, ingestion surfaces.</li>
+      <li><strong>Procedural Continuity</strong>: skill behavior across models and environments.</li>
+      <li><strong>Artifact Continuity</strong>: document generation, round-trip fidelity, structural migration.</li>
+      <li><strong>State Continuity</strong>: source data and generated-interface synchronization.</li>
+      <li><strong>Research-State Portability</strong>: what survives when a workspace is copied.</li>
+      <li><strong>Agent Identity Continuity</strong>: who or what performed each consequential action.</li>
+      <li><strong>Workflow Continuity</strong>: survival across apps, platforms, feature changes, and agent replacement.</li>
+    </ul>
+
+    <h2>The Failure That Looks Successful</h2>
+
+    <p>Hallucination remains important, but it is no longer the only interesting failure. A hallucination often looks wrong. A continuity failure can look completely correct.</p>
+
+    <p>The file opens. The formulas calculate. The presentation is polished. The mini-app responds. Nothing crashes.</p>
+
+    <p>What has disappeared is harder to see: the original source relationship, the human exclusion, the decision that was made three transformations earlier, the skill that altered the procedure, the agent that performed the mutation, or the permission boundary under which the action occurred.</p>
+
+    <p>That is the research frontier Deep Drift now needs to pursue with some aggression. Not because technology is failing to produce things, but because it is becoming extremely good at producing things while making the history of their production harder to recover.</p>
+
+    <p>The creator stack is becoming more capable. It must also become more accountable.</p>
+
+    <hr>
+    <p class="meta"><strong>Research provenance:</strong> Public editorial synthesis derived from ATØR Institute Deep Drift research logging on 20 August 2026. Canonical research evidence, hypothesis status, counter-evidence, timestamps, and provenance remain in <code>compiler-evidence/deep-drift-research-log/</code>. This essay does not promote platform observations into universal facts beyond the available evidence.</p>
+  </article>
+
+  <footer>
+    <p>ATØR Institute · Deep Drift Research</p>
+  </footer>
+</body>
+</html>
