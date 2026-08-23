@@ -1,0 +1,58 @@
+record_id: ator-ai-hardware-material-reliability-watch-2026-08-23
+project: ATØR Institute
+record_type: external_operation
+title: "AI Hardware Material + Reliability Watch GitHub folder, ledger, blackpaper, and blog post"
+status: verified_written_to_github
+authority: "User directive in ChatGPT Work Mode, 2026-08-23"
+source:
+  location: "DeborahRamMozes/ATOR.Institute. repository"
+  stable_id: "main branch"
+  version: "Created on 2026-08-23 UTC"
+lineage:
+  derived_from:
+    - "ChatGPT discussion brief on AI hardware materials, reliability, mineral movement, water crisis, LLM pricing, and academic writing denial"
+    - "Existing ATOR Institute research-journal/llm-update-watch structure"
+    - "Existing ATOR Institute material blog lineage: update-sacrifice-ledger.html, the-interface-is-dry.html, mineral-resonance-ecology.html, synthetic-intelligence-is-material.html"
+  supersedes: []
+  conflicts_with: []
+operation:
+  requested: true
+  performed: true
+  verified: true
+  external_system: "GitHub"
+  external_identifier: "compare 7722370fcba2ee131fc5ea937eb4d0c1bbdefb5b..main, ahead_by 9 before provenance record"
+  evidence: "GitHub compare returned status ahead, ahead_by 9, behind_by 0, and listed the expected added/modified files. Folder and nested file fetches also returned the README, baseline ledger, blackpaper, blog post, posts.json update, and blog index update."
+artifacts:
+  - path: "research-journal/ai-hardware-material-reliability-watch/README.md"
+    purpose: "Research journal scope and method"
+    verification: "Fetched in root folder listing"
+  - path: "research-journal/ai-hardware-material-reliability-watch/logs/2026/08/2026-08-23-baseline-material-reliability-water-ledger.md"
+    purpose: "Baseline discussion-brief ledger"
+    verification: "Fetched in logs/2026/08 listing"
+  - path: "research-journal/ai-hardware-material-reliability-watch/evidence-registry/2026-08-23-source-ledger.md"
+    purpose: "Evidence registry and source strength table"
+    verification: "Listed in compare output as added"
+  - path: "research-journal/ai-hardware-material-reliability-watch/daily-synthesis/2026-08-23-daily-synthesis.md"
+    purpose: "Daily synthesis"
+    verification: "Listed in compare output as added"
+  - path: "research-journal/ai-hardware-material-reliability-watch/templates/daily-material-watch-template.md"
+    purpose: "Reusable daily watch template"
+    verification: "Listed in compare output as added"
+  - path: "research-journal/ai-hardware-material-reliability-watch/blackpapers/2026-08-23-blackpaper-hidden-material-ledger-of-ai.md"
+    purpose: "Blackpaper"
+    verification: "Fetched in blackpapers listing"
+  - path: "blog/black-paper-hidden-material-ledger-of-ai.html"
+    purpose: "Public blog post"
+    verification: "Fetched directly from GitHub"
+  - path: "blog/posts.json"
+    purpose: "Blog post registry"
+    verification: "Fetched and confirmed entry for black-paper-hidden-material-ledger-of-ai.html"
+  - path: "blog/index.html"
+    purpose: "Visible blog archive entry"
+    verification: "Fetched and confirmed visible archive entry"
+integrity:
+  required_sections_checked: true
+  signatures_checked: not_applicable
+  placeholders_checked: true
+  render_checked: not_applicable
+notes: "This provenance record verifies GitHub artifact creation and indexing. It does not convert cited external sources into stronger evidence than the grades assigned in the source ledger."
