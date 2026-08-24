@@ -60,6 +60,8 @@ This registry exists because a filename can correctly say `TIME-UNKNOWN` for a p
 
 | `2026-08-24_18-50-XX_llm-creator-workflow-update-memory-skills-miniapps-docx-pdf-export.md` | ATOR_OBSERVATION / exact-minute | 2026-08-24T18:50+07:00 | repository evidence by 2026-08-24T18:59:44+07:00 | Git commit `bfaf72feb4043866ec48cb55c7555ff08599fec5`; current-source synthesis of memory, skills, mini-apps, DOCX/PDF generation, copy-paste/export behavior, and creator-workflow convergence |
 
+| `2026-08-24_20-44-36_ai-hardware-efficiency-australia-governance-delta.md` | ATOR_OBSERVATION / exact-second | 2026-08-24T20:44:36+07:00 | repository evidence by 2026-08-24T20:46:00+07:00 | Git commit `6ca038519599dcecc9706b44bab14279cc689a7c`; automation runtime supplied exact-second observation time |
+
 ## Interpretation of the registry
 
 The registry now makes four temporal layers inspectable instead of pretending they are one:
