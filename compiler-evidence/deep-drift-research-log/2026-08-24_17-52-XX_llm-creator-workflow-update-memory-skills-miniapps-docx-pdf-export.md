@@ -56,7 +56,7 @@ For Deep Drift, this means reliability must be tested across the whole causal ch
 | 11 Aug 2026 | Anthropic / Claude Platform | Compliance API can return local Cowork and Claude Code session transcripts; API responses expose workspace ID. | Strengthens **Audit-Transcript Continuity** and workspace-level provenance. |
 | 20 Aug 2026 | Anthropic / Claude Platform | Computer use, Skills API, and Files API become GA, with browser use added. Skills are versionable; files persist by ID; agents can act in software and return finished files. | One of the clearest examples of **Procedural-Version Provenance** and **Persistent-File State Continuity**. |
 | Aug 2026 | Anthropic / Claude | Skill and plugin security scanning is available in beta for Enterprise. | A skill is now not only a procedure but a governed executable supply-chain object. |
-| Aug 2026 | Microsoft 365 Copilot | Copilot roadmap continues toward agentic Word, Excel, PowerPoint, App Builder, reusable skills, plugins, Work IQ context, and workflow agents. | Confirms market movement from chat assistants toward integrated creator operating environments. |
+| Current 2026 architecture | Microsoft 365 Copilot | Microsoft documents App Builder, agentic Word/Excel/PowerPoint file creation, Work IQ, and governed agent publication. These are not treated here as a single 24 August release. | Confirms market movement from chat assistants toward integrated creator operating environments while preserving chronology discipline. |
 
 ---
 
@@ -293,7 +293,10 @@ That question is more durable than any single model benchmark because it follows
 - Google Workspace Updates, Sheets Canvas, 13 August 2026: https://workspaceupdates.googleblog.com/2026/08/use-google-sheets-canvas-to-visualize-data.html
 - Google Workspace Updates, Gemini Notebook copy, 17 August 2026: https://workspaceupdates.googleblog.com/2026/08/make-copy-of-notebook-in-gemini-notebook.html
 - Google Workspace Updates, August 2026 archive: https://workspaceupdates.googleblog.com/2026/08/
-- Microsoft 365 Copilot and Copilot extensibility/release documentation: https://learn.microsoft.com/en-us/microsoft-365-copilot/
+- Microsoft 365 Copilot Release Notes: https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes
+- Microsoft Work IQ overview: https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq/
+- Microsoft Word, Excel, and PowerPoint Agents: https://learn.microsoft.com/en-us/microsoft-365/copilot/wordexcelppt-agents
+- Microsoft 365 Roadmap / App Builder and Agent Mode: https://learn.microsoft.com/en-us/copilot/release-plan/2026wave1/copilot-sales/associated-features
 
 ---
 
