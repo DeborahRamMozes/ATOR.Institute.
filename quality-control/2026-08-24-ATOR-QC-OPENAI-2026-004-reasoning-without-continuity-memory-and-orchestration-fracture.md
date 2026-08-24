@@ -1115,6 +1115,11 @@ The answer must be embodiment.
 | Repository | DeborahRamMozes/ATOR.Institute. |
 | Path | quality-control/2026-08-24-ATOR-QC-OPENAI-2026-004-reasoning-without-continuity-memory-and-orchestration-fracture.md |
 | Status at drafting | working_record |
+| Canonical archive status | current — user-authorized public report in the ATØR Institute repository |
+| External publication state | performed and verified |
+| Initial report commit | [f77a87f7f535fa31c089fb4392bf722e22cb6fff](https://github.com/DeborahRamMozes/ATOR.Institute./commit/f77a87f7f535fa31c089fb4392bf722e22cb6fff) |
+| Separate email-draft commit | [58a272edda0a77a3414b07cee0f19d5c0a4eb93e](https://github.com/DeborahRamMozes/ATOR.Institute./commit/58a272edda0a77a3414b07cee0f19d5c0a4eb93e) |
+| Remote verification | Retrieved from main and audited for document ID, title, required sections, provenance, and institutional signatures at 2026-08-24T10:10:45.602Z |
 | Screenshot publication status | Withheld from public repository because source images contain unrelated personal information |
 | Contradiction status | No evidence of internal OpenAI architecture beyond public documentation; causal organizational claims remain inference |
 | Lineage relation | extends ATOR-QC-OPENAI-2026-002 and ATOR-QC-OPENAI-2026-003 |
