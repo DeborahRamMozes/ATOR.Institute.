@@ -1,62 +1,61 @@
 # Deep Drift Research Log
 
-This directory is the canonical chronological event log for Deep Drift Research / ATØR Institute.
+This directory is the single canonical home for ALL chronological research logs produced under Deep Drift Research / ATØR Institute.
 
-## Canonical Path
+## Canonical Location
 
-`YYYY/MM/DD/HH/HH-MM-SS_event-slug.md`
+All research observations, platform watches, hardware/material watches, workflow reliability findings, hypotheses, counter-hypotheses, experiments, evidence captures, provenance findings, and research-architecture corrections belong directly in this directory.
 
-Example:
+There is no separate `research-journal/` tree.
 
-`2026/08/20/00/00-36-24_platform-workflow-shift.md`
+There are no year/month/day/hour subfolders for ordinary research logs.
 
-## Logging Principle
+## Canonical Filename
 
-One distinct event equals one distinct file.
+`YYYY-MM-DD_HH-MM-SS_event-slug.md`
 
-An event may be:
+Examples:
 
-- a new observation;
-- a platform or model behavior change;
-- a contradiction;
-- a new hypothesis;
-- a counter-hypothesis;
-- an experiment;
-- a failed execution;
-- a tool or connector failure;
-- an artifact-generation failure;
-- a provenance finding;
-- a compiler/node revision;
-- a benchmark revision;
-- a source validation;
-- a correction to an earlier interpretation.
+`2026-08-20_00-36-24_platform-workflow-shift.md`
 
-Do not collapse multiple events into one daily summary when their order matters.
+`2026-08-23_15-53-XX_openai-support-automation-inversion-platform-convergence.md`
 
-## Timestamp Rules
+`2026-08-23_TIME-UNKNOWN_ai-hardware-material-reliability-watch.md`
 
-Exact event files use local Asia/Jakarta time in the filename and metadata.
+## Time Precision
 
-Required precision hierarchy:
+Timestamp precision must reflect evidence.
 
-1. `exact-second`: HH:MM:SS is directly evidenced.
-2. `exact-minute`: HH:MM is evidenced, seconds unavailable.
-3. `hour-only`: hour is evidenced, minute/second unavailable.
-4. `date-only`: only date is evidenced.
-5. `reconstructed`: timing comes from later evidence and must cite its source.
+1. `exact-second`: use `HH-MM-SS` only when seconds are evidenced.
+2. `exact-minute`: use `HH-MM-XX` when hour and minute are evidenced but seconds are not.
+3. `hour-only`: use `HH-XX-XX` when only the hour is evidenced.
+4. `date-only`: use `TIME-UNKNOWN` when no defensible clock time is available.
+5. `reconstructed`: state the reconstruction source explicitly inside the log.
 
 Missing precision must never be fabricated.
 
-Unknown-hour events belong under:
+## One Event, One File
 
-`YYYY/MM/DD/_unknown-hour/`
+Each distinct research event remains its own file. The folder stays flat. Research streams are metadata inside the file, not additional directory trees.
 
-## Minimum Event Metadata
+A file may concern:
 
-Every event file should include:
+- LLM platform updates
+- memory, retrieval, skills, plugins, connectors, agents, artifacts, apps, export, migration, provenance, governance
+- AI hardware, minerals, semiconductors, cooling, water, electricity, reliability, pricing, labor
+- Deep Drift theory and benchmark development
+- counterfactual experiments
+- tool or connector failures
+- quality-control evidence
+- source validation
+- corrections to earlier interpretations
+
+## Minimum Metadata
+
+Each event should preserve, where available:
 
 - `observed_at_local`
-- `observed_at_utc` when available
+- `observed_at_utc`
 - `time_precision`
 - `source_timestamp`
 - `source_type`
@@ -76,18 +75,24 @@ Every event file should include:
 - `next_test`
 - `status`
 
+## Evidence and Stream Rule
+
+Research streams such as `LLM Update Watch`, `AI Hardware Material + Reliability Watch`, `Continuity Under Transformation`, `Workflow Reliability`, and `Earth-Technology Accounting` are labels inside chronological files. They do not create separate log repositories or folder trees.
+
+Protocols, standing methods, and non-log canonical documents may remain as named protocol files in this directory. `MONTHLY-EARTH-TECHNOLOGY-ACCOUNTING-PROTOCOL.md` is such a method document, not a dated research-event log.
+
 ## Provenance Rule
 
-Temporal order is part of the evidence. Deep Drift studies system drift, continuity, authorship, transformation, tool execution, and human repair labor. Therefore timestamp loss is research-data loss.
+Temporal order is evidence. A correction does not erase an earlier interpretation. The correction receives its own timestamped file, and the older record remains historically recoverable.
 
-Corrections must be logged as new events rather than silently overwriting the historical fact that an earlier interpretation existed.
-
-## Backfill Rule
-
-Older research can be backfilled only when its timestamp precision is explicitly marked. If exact time cannot be recovered, preserve the event under `_unknown-hour` until better evidence exists.
+Git history preserves prior paths, but the active branch must present one clear research-log surface.
 
 ## Active Canon
 
-Canonical logging architecture established: `2026-08-20T00:47:22+07:00`.
+The earlier nested event hierarchy recorded on 2026-08-20 is now **SUPERSEDED**.
 
-Root README recorded: `2026-08-20T00:48:50+07:00`.
+Canonical architecture adopted by explicit human instruction on 2026-08-24 at 10:57 WIB:
+
+`compiler-evidence/deep-drift-research-log/YYYY-MM-DD_HH-MM-SS_event-slug.md`
+
+No parallel `research-journal/` directory is permitted for Deep Drift research logs.
