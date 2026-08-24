@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>When Procedure Becomes Executable State</title>
+  <meta name="description" content="ATØR Institute Deep Drift essay on Anthropic's production-agent stack, versioned skills, persistent files, browser/computer action, and procedural provenance.">
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+  <p class="back"><a href="index.html">← ATØR Institute Blog Archive</a></p>
+
+  <article>
+    <p class="meta">ATØR Institute · Deep Drift Research · 24 August 2026</p>
+    <h1>When Procedure Becomes Executable State</h1>
+    <p><em>Versioned skills, persistent files, agent action, and the question of whether we can still reconstruct what actually produced the work.</em></p>
+
+    <p>On 20 August 2026, Anthropic announced that computer use, the Skills API, and the Files API were generally available on the Claude Platform, alongside a new browser use tool for agents working in web applications. Read as a product announcement, this sounds like four capabilities arriving together. Read as a systems change, it is more consequential: procedure, source material, execution, and artifact are becoming separate machine-operable layers.</p>
+
+    <p>The relevant Deep Drift stack now looks like this:</p>
+
+    <pre>HUMAN EXPERTISE
+↓
+VERSIONED SKILL
+↓
+PERSISTENT FILE STATE
+↓
+MODEL / AGENT
+↓
+COMPUTER OR BROWSER ACTION
+↓
+EXTERNAL SOFTWARE STATE
+↓
+FINISHED ARTIFACT</pre>
+
+    <p>That stack changes what provenance must mean. “Claude made this” is not enough. “The agent did this” is not enough either. A serious provenance record increasingly needs to answer: which source file, which source state, which skill, which skill version, which permissions, which runtime, which external application state, and which sequence of actions produced the final result?</p>
+
+    <h2>A Procedure Is No Longer Just an Instruction</h2>
+
+    <p>Anthropic describes a skill as a folder of instructions, scripts, and templates that can be uploaded and versioned through the Skills API. This is an important shift. Human expertise can now be packaged as an executable procedural object that survives beyond the single prompt in which it was first described.</p>
+
+    <p>The useful side is obvious. A team does not have to explain the same filing method, document structure, validation sequence, or internal procedure every time. The procedure can become reusable.</p>
+
+    <p>The less comfortable side is equally obvious once we stop admiring the convenience. Procedures can change.</p>
+
+    <p>A skill can become v1, v2, v3. The visible task can remain “prepare the report” while the procedure underneath it changes. If the final document is later inspected, can we identify which procedural version produced it?</p>
+
+    <p>Deep Drift calls this research problem <strong>Procedural-Version Provenance</strong>.</p>
+
+    <pre>source file ID
+→ source state
+→ skill ID
+→ skill version
+→ model / agent
+→ tool permissions
+→ software action
+→ artifact</pre>
+
+    <p>The point is not bureaucratic decoration. The point is causal reconstruction.</p>
+
+    <h2>Persistent Files Turn Documents into Workflow State</h2>
+
+    <p>The Files API adds another layer. A document can be uploaded once, receive a file ID, and then be referenced again in later requests rather than being resent every time. That is useful because the file becomes persistent working material for an agent.</p>
+
+    <p>It also means the file is no longer simply an attachment. It is part of system state.</p>
+
+    <p>Deep Drift therefore needs to distinguish:</p>
+
+    <pre>same filename
+≠
+same file ID
+≠
+same file contents
+≠
+same source state</pre>
+
+    <p>A workflow can look unchanged while its source object has changed. A file may be deleted and re-uploaded. A visually similar revision may receive another ID. A stale reference may survive in a workflow. A human may remember the document by name while the runtime knows it by identifier.</p>
+
+    <p>This becomes <strong>Persistent-File State Continuity</strong>: can the system preserve and reveal which exact source state was used at the moment an agent acted?</p>
+
+    <h2>The Browser Is Not a Neutral Pipe</h2>
+
+    <p>Computer use and browser use move the causal chain outside the model environment. Anthropic describes browser use as combining screenshot interaction with page structure, allowing the agent to act on specific fields or buttons rather than treating the interface only as pixels.</p>
+
+    <p>This improves execution, but it also enlarges the system under test.</p>
+
+    <p>The result of an agentic workflow can now depend on:</p>
+
+    <ul>
+      <li>the skill version,</li>
+      <li>the file state,</li>
+      <li>the model,</li>
+      <li>the permission state,</li>
+      <li>the browser session,</li>
+      <li>the current page structure,</li>
+      <li>remote application data,</li>
+      <li>and the target software's own update cycle.</li>
+    </ul>
+
+    <p>So “same prompt” is becoming an increasingly weak experimental description.</p>
+
+    <p>Even “same agent” may be insufficient.</p>
+
+    <h2>Procedural Provenance Drift</h2>
+
+    <p>ĀTØR Institute is treating <strong>Procedural Provenance Drift</strong> as a working methodological hypothesis, not an established fact.</p>
+
+    <p>The term describes a condition in which the procedural state responsible for an action becomes lost, ambiguous, or misattributed after a skill has been versioned, reused, copied, executed by an agent, or separated from the human who originally supplied the expertise.</p>
+
+    <p>This can produce one of the characteristic Deep Drift failures: the output looks completely reasonable.</p>
+
+    <p>The document opens. The form is submitted. The report has the right title. The numbers look plausible. Nothing obviously broke.</p>
+
+    <p>What has disappeared is the answer to a harder question:</p>
+
+    <blockquote>Which procedure actually caused this result?</blockquote>
+
+    <p>Correctness and causal recoverability are not the same property.</p>
+
+    <h2>The Benchmark</h2>
+
+    <p>A minimal Deep Drift test is simple.</p>
+
+    <pre>same source
+same task
+same target application
+same permissions
+
+SKILL v1
+vs
+SKILL v2</pre>
+
+    <p>Run repeated trials. Measure the action sequence, omitted or added steps, approval behavior, error recovery, artifact structure, metadata, provenance, and human repair labor. Then ask an independent reviewer to reconstruct which skill version produced which artifact.</p>
+
+    <p>A second test holds the skill constant and changes the source state:</p>
+
+    <pre>same skill
+same task
+
+FILE STATE T1
+vs
+FILE STATE T2</pre>
+
+    <p>Delete, re-upload, revise, rename, or substitute the source under controlled conditions. Measure whether the system fails visibly, substitutes silently, retrieves stale material, or preserves the correct causal lineage.</p>
+
+    <h2>Three Rival Explanations Matter</h2>
+
+    <p>Deep Drift should not label every difference “provenance drift.” There are simpler explanations.</p>
+
+    <p>One possibility is ordinary model nondeterminism. Another is external application variance: a changed interface, stale browser session, permission difference, latency, or remote data change. A third is that native platform identifiers and version controls may already preserve enough information to make the provenance problem manageable.</p>
+
+    <p>That is why the benchmark must use controlled perturbation rather than narrative enthusiasm.</p>
+
+    <p>A theory earns status only if the effect survives rivalry.</p>
+
+    <h2>Why This Matters Beyond Anthropic</h2>
+
+    <p>The significance is larger than one vendor. The commercial AI field is moving toward systems where human knowledge becomes portable procedure, files become persistent state, agents perform actions, and artifacts emerge after several machine-controlled transformations.</p>
+
+    <p>The old model-centric question was:</p>
+
+    <blockquote>Did the model answer correctly?</blockquote>
+
+    <p>The post-model systems question is:</p>
+
+    <blockquote>Can we reconstruct the complete state that made this action possible?</blockquote>
+
+    <p>That state now includes human expertise, procedural version, source identity, permissions, runtime, external software, and artifact lineage.</p>
+
+    <p>This is exactly where Deep Drift is positioning itself: not in the competition to declare which model is smartest, but in the much less glamorous and increasingly necessary task of testing whether intelligence remains accountable after it becomes infrastructure.</p>
+
+    <h2>The Deep Drift Extension</h2>
+
+    <pre>HUMAN INTENT
+↓
+HUMAN EXPERTISE
+↓
+VERSIONED PROCEDURE
+↓
+PERSISTENT SOURCE
+↓
+MODEL
+↓
+AGENT
+↓
+PERMISSION
+↓
+COMPUTER / BROWSER TOOL
+↓
+EXTERNAL SOFTWARE STATE
+↓
+ACTION
+↓
+ARTIFACT
+↓
+EXPORT / HANDOFF / REUSE</pre>
+
+    <p>The final artifact may survive every one of those transitions.</p>
+
+    <p>The more difficult question is whether its history survives with it.</p>
+
+    <hr>
+
+    <h2>Catatan Indonesia</h2>
+
+    <p>Perubahan ini tidak hanya berarti agent menjadi makin canggih. Ia berarti <strong>prosedur manusia mulai menjadi benda sistem yang dapat disimpan, diberi versi, dipanggil ulang, dan dijalankan tanpa kehadiran manusia yang mula-mula menerangkan prosedur itu</strong>. File juga mulai menjadi persistent state, bukan sekadar lampiran sesaat.</p>
+
+    <p>Karena itu pertanyaan Deep Drift harus naik satu tingkat. Bukan hanya “apakah hasilnya benar?”, tetapi: <strong>versi pengetahuan prosedural mana dan keadaan sumber mana yang benar-benar menghasilkan tindakan itu?</strong></p>
+
+    <p>Jika jawaban tersebut tidak dapat dipulihkan, output dapat kelihatan sempurna sementara sejarah kausalnya sudah hilang.</p>
+
+    <hr>
+
+    <p class="meta"><strong>Primary source:</strong> Anthropic, “Build production agents with computer use, the Skills API, and the Files API,” 20 August 2026: https://claude.com/blog/computer-use-skills-api-files-api</p>
+    <p class="meta"><strong>Research provenance:</strong> Public editorial synthesis derived from ATØR Institute Deep Drift research logging on 24 August 2026. Procedural-Version Provenance, Persistent-File State Continuity, and Procedural Provenance Drift are ATØR Institute research constructs and are not claims made by Anthropic. Canonical evidence, hypothesis status, counter-hypotheses, timestamps, and failure conditions remain in <code>compiler-evidence/deep-drift-research-log/</code>.</p>
+  </article>
+
+  <footer>
+    <p>ATØR Institute · Deep Drift Research</p>
+  </footer>
+</body>
+</html>
