@@ -56,6 +56,8 @@ This registry exists because a filename can correctly say `TIME-UNKNOWN` for a p
 | `2026-08-24_14-55-XX_chat-ui-visible-llm-workflow-rollout-and-provenance-report.md` | ATOR_OBSERVATION + CHAT_UI / exact-minute | 2026-08-24T14:55+07:00 | later Git archival commit `d77eeb60fdd6b28fbc414b1bc5938b2a0cf7420b` | visible grey UI label `Today 2:55 PM`; seconds unknown |
 | `2026-08-24_16-01-XX_current-chat-tab-timestamp-audit-and-full-research-ingest.md` | ATOR_OBSERVATION / exact-minute | 2026-08-24T16:01+07:00 | later Git archival commit `b9980cbb253eb6aef5769ed83803f77230386aa4` | explicit current research-act runtime minute |
 
+| `2026-08-24_18-37-10_ai-hardware-material-water-policy-delta.md` | ATOR_OBSERVATION / exact-second | 2026-08-24T18:37:10+07:00 | repository evidence by 2026-08-24T18:41:34+07:00 | Git commit `f1112fbedd3b8c92fa999d1f97f85dca691f5d92`; automation runtime supplied exact-second observation time |
+
 ## Interpretation of the registry
 
 The registry now makes four temporal layers inspectable instead of pretending they are one:
