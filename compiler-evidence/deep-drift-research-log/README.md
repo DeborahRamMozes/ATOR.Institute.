@@ -34,6 +34,24 @@ Timestamp precision must reflect evidence.
 
 Missing precision must never be fabricated.
 
+## Timestamp Basis
+
+Every dated log must declare what its filename timestamp represents.
+
+### `timestamp_basis: ATOR_OBSERVATION`
+
+Use the local Asia/Jakarta observation time when the event is an ATØR research act, experiment, correction, tool failure, interpretation, or internal benchmark development.
+
+### `timestamp_basis: PROVIDER_PUBLICATION`
+
+Use the provider's publication or release date for historical LLM/platform trend backfills when the task is to reconstruct the chronology of platform updates. If the provider exposes only a date and no clock time, the filename must use `TIME-UNKNOWN`. The file must also record the later ATØR observation/backfill time separately.
+
+### `timestamp_basis: PROVIDER_ROLLOUT_START`
+
+Use the explicitly documented rollout-start date when the research event is the beginning of a rollout rather than the announcement. If no rollout clock time is published, use `TIME-UNKNOWN`.
+
+Provider publication time, provider rollout time, and ATØR observation time must never be silently treated as the same timestamp.
+
 ## One Event, One File
 
 Each distinct research event remains its own file. The folder stays flat. Research streams are metadata inside the file, not additional directory trees.
@@ -54,10 +72,12 @@ A file may concern:
 
 Each event should preserve, where available:
 
+- `timestamp_basis`
 - `observed_at_local`
 - `observed_at_utc`
 - `time_precision`
 - `source_timestamp`
+- `rollout_timestamp` when applicable
 - `source_type`
 - `source_identifier`
 - `research_stream`
@@ -96,3 +116,5 @@ Canonical architecture adopted by explicit human instruction on 2026-08-24 at 10
 `compiler-evidence/deep-drift-research-log/YYYY-MM-DD_HH-MM-SS_event-slug.md`
 
 No parallel `research-journal/` directory is permitted for Deep Drift research logs.
+
+Provider-update chronology rule added on 2026-08-24: historical LLM/platform trend backfills may use the provider publication or rollout date as the filename date only when `timestamp_basis` explicitly declares that choice and missing clock precision remains `TIME-UNKNOWN`.
