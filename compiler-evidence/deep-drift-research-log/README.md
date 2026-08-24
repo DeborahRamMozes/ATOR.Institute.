@@ -118,3 +118,54 @@ Canonical architecture adopted by explicit human instruction on 2026-08-24 at 10
 No parallel `research-journal/` directory is permitted for Deep Drift research logs.
 
 Provider-update chronology rule added on 2026-08-24: historical LLM/platform trend backfills may use the provider publication or rollout date as the filename date only when `timestamp_basis` explicitly declares that choice and missing clock precision remains `TIME-UNKNOWN`.
+
+## Mandatory Dual-Timestamp Provenance Layer
+
+Adopted 2026-08-24 at 16:01 WIB after direct UI timestamp evidence exposed an ambiguity in earlier logging language.
+
+Every research event must distinguish at least two clocks whenever both exist:
+
+1. **event/source clock**: when the provider publication, rollout, experiment, or observed phenomenon occurred;
+2. **ATØR record clock**: when the research observation was actually captured, written, committed, or otherwise archived by ATØR.
+
+A third clock must be preserved when available:
+
+3. **chat UI clock**: the timestamp visibly rendered by the ChatGPT interface for the message that generated or discussed the research event.
+
+### Timestamp evidence hierarchy
+
+Use the strongest available evidence without silently converting one clock into another:
+
+1. `chat_ui_timestamp` when visibly rendered in the product UI;
+2. explicit tool/runtime timestamp supplied for the research act;
+3. explicit in-log observation timestamp;
+4. Git commit timestamp as repository archival evidence;
+5. provider publication/rollout date or time;
+6. `TIME-UNKNOWN` when no clock time is defensible.
+
+### Git timestamp rule
+
+Git commit time is valid evidence for **repository recording time**, not automatic proof of the original chat-message time or provider-event time.
+
+Use fields such as:
+
+- `git_recorded_at_local`
+- `git_recorded_at_utc`
+- `git_commit_sha`
+- `git_timestamp_role: repository-archival-time`
+
+Never rename a `PROVIDER_PUBLICATION` or `PROVIDER_ROLLOUT_START` file from `TIME-UNKNOWN` to a clock time merely because its later Git commit has seconds. That would be precision laundering, which is a ridiculous way to make a research log look tidy while making it less true.
+
+### UI timestamp rule
+
+If the ChatGPT UI visibly shows `Today 2:55 PM` and the calendar date is established as 2026-08-24 in Asia/Jakarta, record:
+
+- `chat_ui_timestamp_local: 2026-08-24T14:55+07:00`
+- `chat_ui_time_precision: exact-minute`
+- `chat_ui_seconds: unknown`
+
+Do not invent seconds.
+
+### Canonical companion registry
+
+`TIMESTAMP-REGISTRY.md` is the companion audit surface for the entire active Deep Drift chronology. It records timestamp basis, precision, source/event time, ATØR observation or archival time, and the evidence used to justify that time. Individual event files remain canonical research objects; the registry is the temporal cross-index, not a replacement for them.
