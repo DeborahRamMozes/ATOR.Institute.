@@ -64,6 +64,10 @@ This registry exists because a filename can correctly say `TIME-UNKNOWN` for a p
 
 | `2026-08-25_18-24-40_nvidia-capital-chokepoint-openai-ohio.md` | ATOR_OBSERVATION / exact-second | 2026-08-25T18:24:40+07:00 | repository evidence by 2026-08-25T18:27:00+07:00 | Git commit `b8d0e91e2540b76ef028699eefb3c1b1cda74ac7`; automation runtime supplied exact-second observation time |
 
+| `2026-08-26_04-27-19_copper-arbitrage-photoacid-water-governance-writing-economy.md` | ATOR_OBSERVATION / exact-second | 2026-08-26T04:27:19-07:00 (2026-08-26T11:27:19Z) | repository evidence at 2026-08-26T11:32:47Z | Git commit `4f3eed28e581887dcd3d6391850e94716b14b4e5`; exact-second observation recorded in file metadata |
+
+| `2026-08-27_18-05-20_nvidia-memory-lock-in-rare-earth-copper-corridor.md` | ATOR_OBSERVATION / exact-second | 2026-08-27T18:05:20+07:00 (2026-08-27T11:05:20Z) | repository evidence at 2026-08-27T11:10:11Z | Git commit `b76dc5e969d5c5692e14a817b01e29eec5a2f2b1`; automation runtime supplied exact-second observation time |
+
 ## Interpretation of the registry
 
 The registry now makes four temporal layers inspectable instead of pretending they are one:
