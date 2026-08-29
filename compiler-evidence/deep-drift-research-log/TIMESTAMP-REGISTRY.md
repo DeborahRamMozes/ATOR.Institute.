@@ -70,6 +70,8 @@ This registry exists because a filename can correctly say `TIME-UNKNOWN` for a p
 
 | `2026-08-28_18-11-22_nextdc-water-accounting-sk-hynix-hbm-geography.md` | ATOR_OBSERVATION / exact-second | 2026-08-28T18:11:22+07:00 (2026-08-28T11:11:22Z) | repository evidence at 2026-08-28T11:15:21Z | Git commit `4f2c7cd1c7cbd107d9ffceef3ab10121d5ceb1dc`; automation runtime supplied exact-second observation time |
 
+| `2026-08-29_18-28-20_south-america-minerals-cxmt-memory-uk-water-politics.md` | ATOR_OBSERVATION / exact-second | 2026-08-29T18:28:20+07:00 (2026-08-29T11:28:20Z) | repository evidence at 2026-08-29T11:30:37Z | Git commit `57d3505741948d68e39a4a6993c0d372924a8dbd`; automation runtime supplied exact-second observation time |
+
 ## Interpretation of the registry
 
 The registry now makes four temporal layers inspectable instead of pretending they are one:
