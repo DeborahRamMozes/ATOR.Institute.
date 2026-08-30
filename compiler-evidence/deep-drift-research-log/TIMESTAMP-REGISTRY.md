@@ -72,6 +72,8 @@ This registry exists because a filename can correctly say `TIME-UNKNOWN` for a p
 
 | `2026-08-29_18-28-20_south-america-minerals-cxmt-memory-uk-water-politics.md` | ATOR_OBSERVATION / exact-second | 2026-08-29T18:28:20+07:00 (2026-08-29T11:28:20Z) | repository evidence at 2026-08-29T11:30:37Z | Git commit `57d3505741948d68e39a4a6993c0d372924a8dbd`; automation runtime supplied exact-second observation time |
 
+| `2026-08-30_18-50-15_specialty-materials-merger-termination.md` | ATOR_OBSERVATION / exact-second; source event date preserved separately | source event 2026-08-27; observed 2026-08-30T18:50:15+07:00 (2026-08-30T11:50:15Z) | repository evidence at 2026-08-30T11:52:13Z | Git commit `f0ff08df9cba2acd20016a818239e928ec5f0e17`; omitted-event recovery without backdating observation |
+
 ## Interpretation of the registry
 
 The registry now makes four temporal layers inspectable instead of pretending they are one:
