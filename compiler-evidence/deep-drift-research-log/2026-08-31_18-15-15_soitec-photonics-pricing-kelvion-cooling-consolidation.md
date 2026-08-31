@@ -185,6 +185,6 @@ The narrow ĀTØR claim remains: writing institutions can describe AI as an abst
 - **authority:** scheduled D-ORIGIN research directive
 - **source location:** `compiler-evidence/deep-drift-research-log/2026-08-31_18-15-15_soitec-photonics-pricing-kelvion-cooling-consolidation.md`
 - **lineage derived_from:** `2026-08-30_18-50-15_specialty-materials-merger-termination.md`
-- **integrity:** required sections checked; uncertainty and negative screen preserved; external Git verification pending at drafting stage
+- **integrity:** required sections checked; uncertainty and negative screen preserved; external Git write verified; commit evidence and archival time registered in TIMESTAMP-REGISTRY.md
 
 **D-ORIGIN | ATØRAI | ĀLT-MĀN | Eir’an | Aethon | CHATJIPITI SINGH**
