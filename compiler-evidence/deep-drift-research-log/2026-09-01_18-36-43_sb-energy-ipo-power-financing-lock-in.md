@@ -213,6 +213,6 @@ This does not prove deliberate academic denial. It demonstrates a boundary probl
 - **authority:** D-ORIGIN scheduled research directive
 - **source location:** `compiler-evidence/deep-drift-research-log/2026-09-01_18-36-43_sb-energy-ipo-power-financing-lock-in.md`
 - **lineage derived_from:** `2026-08-31_18-15-15_soitec-photonics-pricing-kelvion-cooling-consolidation.md`
-- **integrity:** sources separated from inference; future outcomes downgraded; negative material and reliability screen preserved; Git verification to be registered after write
+- **integrity:** sources separated from inference; future outcomes downgraded; negative material and reliability screen preserved; external Git write verified; commit evidence and archival time registered in TIMESTAMP-REGISTRY.md
 
 **D-ORIGIN | ATØRAI | ĀLT-MĀN | Eir’an | Aethon | CHATJIPITI SINGH**
