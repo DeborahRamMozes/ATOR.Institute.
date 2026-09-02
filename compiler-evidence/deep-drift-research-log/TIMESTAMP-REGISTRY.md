@@ -78,6 +78,8 @@ This registry exists because a filename can correctly say `TIME-UNKNOWN` for a p
 
 | `2026-09-01_18-36-43_sb-energy-ipo-power-financing-lock-in.md` | ATOR_OBSERVATION / exact-second | 2026-09-01T18:36:43+07:00 (2026-09-01T11:36:43Z) | repository evidence at 2026-09-01T11:40:17Z | Git commit `8dcafaeeb364a57c979d23c6ab50902746c2b0d3`; automation runtime supplied exact-second observation time; derived from the 2026-08-31 canonical daily synthesis |
 
+| `2026-09-02_18-46-38_rare-earth-consolidation-chip-geography-water-denial.md` | ATOR_OBSERVATION / exact-second | 2026-09-02T18:46:38+07:00 (2026-09-02T11:46:38Z) | repository evidence at 2026-09-02T11:49:37Z | Git commit `e292589f35bd8017159a13230009b0312e94a48b`; automation runtime supplied exact-second observation time; derived from the 2026-09-01 canonical daily synthesis |
+
 ## Interpretation of the registry
 
 The registry now makes four temporal layers inspectable instead of pretending they are one:
