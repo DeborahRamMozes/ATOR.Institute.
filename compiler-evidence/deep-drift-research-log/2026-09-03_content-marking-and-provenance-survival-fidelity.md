@@ -1,0 +1,400 @@
+# Deep Drift Research Update — CMPSF
+
+## Content Marking and Provenance Survival Fidelity
+
+**Research date:** 3 September 2026  
+**Primary fresh delta:** Anthropic now documents machine-readable marking for supported Claude models, including embedded text watermarks and digitally signed provenance metadata on supported generated files.  
+**Scope:** AI-origin marking, copy-paste persistence, export/conversion loss, file provenance, content credentials, DOCX/PDF implications, creator workflow lineage, and downstream derivative integrity.
+
+## Executive finding
+
+Anthropic's current first-party documentation introduces a creator-workflow change that matters directly to Deep Drift: supported Claude outputs can now carry **machine-readable origin signals inside the content itself**.
+
+Claude models launched on or after 2 August 2026 support marking at launch. Anthropic currently identifies Fable 5.1 and Mythos 5.1 as supported models. The marking applies across Claude Platform, Claude, Claude Code, Claude Cowork, and Claude Tag, and watermarks also travel through supported cloud-partner deployments.
+
+Anthropic uses two complementary mechanisms:
+
+```text
+GENERATED TEXT
+   |
+   +--> EMBEDDED WATERMARK
+
+GENERATED FILE
+   |
+   +--> SIGNED PROVENANCE METADATA
+        (C2PA where supported)
+```
+
+The critical Deep Drift distinction is that these two provenance channels have different survival properties.
+
+```text
+COPY-PASTE TEXT
+-> WATERMARK MAY TRAVEL
+
+FORMAT CONVERSION / RE-SAVE / SCREENSHOT
+-> FILE PROVENANCE METADATA MAY DISAPPEAR
+```
+
+Therefore:
+
+```text
+NO VISIBLE LABEL
+!= NO MACHINE-READABLE MARK
+
+MARK DETECTED
+!= CLAUDE WAS ORIGINAL AUTHOR
+
+NO MARK DETECTED
+!= NO AI INVOLVEMENT
+
+SAME CONTENT
+!= SAME PROVENANCE SIGNAL
+
+FORMAT CONVERSION
+!= PROVENANCE-PRESERVING EXPORT
+```
+
+For Deep Drift, the research object must now include not only artifact lineage but **provenance-signal survival across transformations**.
+
+## New node
+
+### Content Marking and Provenance Survival Fidelity (CMPSF)
+
+Minimum state model:
+
+```text
+model_identity
+model_release_date
+marking_support
+product_surface
+text_watermark_state
+file_provenance_state
+provenance_standard
+source_artifact_id
+copy_event
+paste_event
+edit_event
+format_conversion_event
+re-save_event
+screenshot_event
+metadata_strip_state
+detection_result
+detection_tool
+downstream_derivative
+```
+
+## 1. AI-origin marking is becoming part of the artifact itself
+
+Until now, creator provenance often depended on external logs:
+
+```text
+chat transcript
+run history
+platform logs
+file names
+human disclosure
+```
+
+Anthropic's new approach adds provenance signals directly to generated content.
+
+This means the artifact may carry machine-readable evidence even after leaving the original application.
+
+The artifact is beginning to remember something about how it was processed.
+
+## 2. Text watermark and file provenance are different systems
+
+Anthropic says supported generated text contains an imperceptible watermark woven into the text. The watermark is designed to travel when text is copied and pasted elsewhere and may survive some editing.
+
+Generated supported file types can instead carry signed provenance metadata based on the C2PA standard.
+
+These are not interchangeable:
+
+```text
+TEXT WATERMARK
+= content-level signal
+
+SIGNED FILE METADATA
+= container / file-level provenance signal
+```
+
+Deep Drift must archive them separately.
+
+## 3. Copy-paste no longer necessarily destroys origin evidence
+
+This is particularly important for creator workflows.
+
+The old assumption was:
+
+```text
+CHAT
+-> COPY
+-> PASTE
+-> ORIGIN TRACE WEAKENS
+```
+
+Anthropic's watermark design changes that assumption:
+
+```text
+CHAT
+-> COPY
+-> PASTE
+-> WATERMARK MAY SURVIVE
+```
+
+So copy-paste is no longer automatically equivalent to provenance erasure.
+
+This creates a new category:
+
+**transferred provenance**.
+
+## 4. Format conversion can destroy file-level provenance
+
+Anthropic explicitly lists format conversion, re-saving, screenshots, and other transformations as cases where file metadata may be stripped.
+
+Therefore:
+
+```text
+PNG WITH CONTENT CREDENTIAL
+-> CONVERT
+-> PDF / DOCX / IMAGE DERIVATIVE
+```
+
+may produce a new artifact whose visible content remains similar while its original signed provenance metadata is gone.
+
+For Deep Drift:
+
+```text
+CONTENT SURVIVAL
+!= PROVENANCE SURVIVAL
+```
+
+This is a direct export-lineage problem.
+
+## 5. DOCX and PDF must not be presumed provenance-preserving
+
+Anthropic's current examples of supported signed-file marking include formats such as SVG, PNG, and JPG, and Anthropic states that signed metadata applies where a platform and file-generation feature support it.
+
+That means Deep Drift should **not** assume that every DOCX or PDF generated or derived from Claude currently carries the same provenance metadata.
+
+The correct rule is:
+
+```text
+FILE GENERATED BY SUPPORTED MODEL
+!= PROVENANCE METADATA GUARANTEED FOR EVERY FILE TYPE
+```
+
+Any DOCX/PDF workflow should explicitly record whether a supported content credential was actually present before and after export.
+
+## 6. Detection is evidence, not full authorship proof
+
+Anthropic is unusually clear about the limitation:
+
+A detected mark indicates that content may have been processed by Claude. It does not prove Claude originated the ideas, source text, or underlying data.
+
+Claude may have:
+
+- proofread;
+- translated;
+- summarized;
+- reformatted;
+- converted;
+- partially rewritten;
+- combined prior human material.
+
+Therefore:
+
+```text
+CLAUDE MARK PRESENT
+!= CLAUDE SOLE AUTHOR
+```
+
+Deep Drift must distinguish **processing provenance** from **authorship provenance**.
+
+## 7. Absence of a mark is weak negative evidence
+
+Anthropic also states that a mark may be absent because:
+
+- the model predates marking support;
+- the text was heavily edited or paraphrased;
+- the passage is too short;
+- metadata was stripped;
+- the platform, feature, or file type did not support the relevant marking method.
+
+Thus:
+
+```text
+MARK ABSENT
+!= HUMAN-ONLY ORIGIN
+```
+
+A provenance detector cannot be treated as a binary authorship detector.
+
+## 8. Creator workflow trend: provenance is becoming embedded infrastructure
+
+The wider creator stack is moving from:
+
+```text
+CREATE
+-> EXPORT
+-> DISCLOSE MANUALLY
+```
+
+toward:
+
+```text
+CREATE
+-> EMBED ORIGIN SIGNAL
+-> TRANSFORM
+-> DETECT / VERIFY
+-> PRESERVE OR LOSE SIGNAL
+```
+
+This adds a new technical layer to document and media workflows:
+
+```text
+CONTENT
++ ORIGIN SIGNAL
++ CONTAINER
++ TRANSFORMATION HISTORY
+```
+
+The final visible artifact is only one layer.
+
+## Fresh category scan
+
+| Area | Fresh status | Deep Drift implication |
+|---|---|---|
+| Memory | No stronger new delta than MMBESF | Existing memory-boundary rules remain current |
+| Skills/plugins | No stronger new delta today | Existing procedural provenance nodes remain current |
+| Mini-app builders | No stronger fresh implementation | Existing builder/runtime nodes remain current |
+| Chat-to-document | Material downstream effect | Copied text may preserve watermarking across surfaces |
+| DOCX/PDF generation | Important caution | Do not assume signed provenance is supported or preserved for every generated/converted file type |
+| Copy-paste/export | Major | Text watermark may survive copy-paste while file metadata may be lost through conversion or re-saving |
+| Creator workflow | Major | Machine-readable origin is becoming part of the creator artifact stack |
+
+## New failure classes
+
+### Mark-Equals-Authorship Fallacy
+Treating a detected Claude mark as proof that Claude originated the underlying ideas or source content.
+
+### No-Mark-Human-Origin Fallacy
+Treating absence of a detectable mark as evidence that no AI system participated.
+
+### Content-Survival-Equals-Provenance-Survival Error
+Assuming visible content preservation means origin metadata also survived.
+
+### Copy-Paste-Erases-Origin Fallacy
+Assuming copied text necessarily loses all machine-readable AI-origin evidence.
+
+### Format-Conversion Neutrality Error
+Treating conversion, re-saving, screenshotting, or derivative generation as provenance-neutral transformations.
+
+### File-Type Universality Error
+Assuming provenance marking works identically across PNG, SVG, JPG, DOCX, PDF, and other creator artifacts.
+
+### Processing-Equals-Generation Error
+Collapsing proofreading, translation, summarization, conversion, and original generation into one authorship category.
+
+## Deep Drift benchmark additions
+
+**Marking Presence Fidelity (MPF)**  
+Can the archive record whether text watermarking or signed file provenance was actually present for a given output?
+
+**Provenance Survival Fidelity (PSF)**  
+Can provenance signals be checked before and after copy, paste, edit, conversion, re-save, screenshot, and export events?
+
+**Processing-vs-Authorship Fidelity (PAF)**  
+Can model processing be distinguished from original intellectual authorship?
+
+**File-Type Marking Fidelity (FTMF)**  
+Can supported and unsupported marking behavior remain explicit by file type and platform surface?
+
+**Detector Interpretation Fidelity (DIF)**  
+Can detector results be preserved as probabilistic provenance evidence rather than binary authorship judgments?
+
+**Derivative Credential Fidelity (DCF)**  
+Can each derivative artifact record whether it inherited, lost, or replaced its parent's signed provenance credential?
+
+## DRPA-1.0 protocol additions
+
+### MACHINE-READABLE ORIGIN RULE
+
+> When an AI platform embeds machine-readable marks, watermarks, content credentials, signed provenance metadata, or equivalent origin signals into generated or processed content, those signals must be recorded as a separate provenance layer. Preserve model identity, model release generation, product surface, marking support state, marking mechanism, file type, detection result, detector identity, and known limitations. A detected mark must never be treated as proof of sole authorship, and absence of a mark must never be treated as proof of human-only origin.
+
+### PROVENANCE-SIGNAL SURVIVAL RULE
+
+> Every material copy, paste, edit, conversion, re-save, screenshot, export, compression, and derivative-generation event should be treated as a potential provenance-signal mutation. Where technically possible, verify the presence or absence of machine-readable marks before and after each transformation. Preserve whether the content survived, whether the provenance signal survived, whether the signal became unverifiable, and whether a new credential was issued. Content continuity must never be substituted for provenance continuity.
+
+## Eir'an state-flow addition
+
+```text
+ORIGIN MARK STATE:
+model marking support
+text watermark present / unknown
+file credential present / unknown
+credential standard
+
+TRANSFORMATION STATE:
+copy
+paste
+edit
+conversion
+re-save
+screenshot
+export
+
+SURVIVAL STATE:
+content preserved
+watermark preserved / unknown
+metadata preserved / stripped / unknown
+credential replaced
+
+INTERPRETATION STATE:
+processed by model
+original authorship unknown
+human source material present
+mixed authorship
+```
+
+## Canonical Deep Drift requirement
+
+> Machine-readable origin signals must be archived as fragile provenance objects with their own lifecycle. The research record should distinguish content from watermark, file from credential, processing from authorship, and visible continuity from provenance continuity. Every derivative transformation should state whether the provenance signal survived, disappeared, became unverifiable, or was replaced.
+
+## Deep Drift principle
+
+> **The artifact can now carry a machine-readable memory of its own origin, but export can still give it amnesia.**
+
+Operationally:
+
+> **Archive the provenance signal before the format eats it.**
+
+## Broader platform scan
+
+OpenAI's current ChatGPT release notes still show 1 September 2026 as the latest public product entry found in this scan, so no stronger fresh memory/Work/export delta appeared there today.
+
+Microsoft's current Copilot documentation continues to emphasize harnesses, agents, file generation, connectors, sensitivity inheritance, and centralized libraries, all already represented in prior Deep Drift nodes.
+
+Google Workspace's strongest recent creator deltas remain persistent cross-surface instructions, document-to-video generation, and automated Drive/Gmail/Chat mutations already captured in earlier nodes.
+
+The genuinely new research value in this scan is therefore **origin marking plus provenance-signal survival across creator transformations**.
+
+## Sources
+
+1. Anthropic Help Center. **How Claude marks AI-generated content.** Updated 2 September 2026; accessed 3 September 2026. Documents machine-readable marking for supported Claude models, embedded text watermarks, digitally signed file provenance metadata, C2PA, copy-paste persistence, detection, cloud-partner behavior, and limitations including metadata loss during conversion, re-saving, and screenshots.  
+   https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content
+
+2. Anthropic. **How Claude's text watermark works.** 14 August 2026. Explains Anthropic's text-watermarking approach for future Claude models and the transparency rationale under the EU AI Act.  
+   https://www.anthropic.com/news/claude-text-watermark
+
+3. OpenAI Help Center. **ChatGPT Release Notes.** Checked 3 September 2026; latest public entry found in this scan remains 1 September 2026.  
+   https://help.openai.com/en/articles/6825453-chatgpt-release-notes
+
+4. Microsoft Learn. **Release Notes for Microsoft 365 Copilot.** Checked 3 September 2026. Current creator-workflow changes remain complementary to this node.  
+   https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes
+
+## Research status
+
+**Node status:** New.  
+**Duplicate check:** No matching Deep Drift repository entry was found for machine-readable AI-origin marking combined with copy-paste survival, metadata stripping, and derivative credential loss.  
+**Relationship to prior nodes:** Extends CPATF, CMATF, CMDMF, TCAMF, WAPSF, artifact-lineage rules, and export/migration fidelity by introducing a separate provenance-signal lifecycle.  
+**Freshness:** Primary Anthropic documentation was updated 2 September 2026 and verified on 3 September 2026.
