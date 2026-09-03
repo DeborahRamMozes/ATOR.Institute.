@@ -3,14 +3,14 @@
 ## Context-Compaction and Procedural-State Persistence Fidelity
 
 **Research date:** 3 September 2026  
-**Primary fresh delta:** OpenAI released Codex CLI 0.153.0 on 3 September 2026 with an experimental context-management mode that introduces token-budgeted context, history notes, and a `new_context` tool. The same release also preserves several procedural states across compaction, restarts, forks, and reconnects, while adding remote plugin-marketplace management from the CLI.  
-**Scope:** context compression, history reconstruction, restart/fork persistence, approvals, drafts, transcripts, pasted content, attachments, plugin-marketplace state, and creator-runtime reproducibility.
+**Primary fresh delta:** OpenAI Codex CLI 0.153.0, published 3 September 2026, introduces an experimental context-management mode using token-budget context, history notes, and a `new_context` tool for eligible ChatGPT-backed Codex sessions. The same release documents selective persistence of procedural and composer state across compaction, restart, fork, disconnect, and reconnect.  
+**Scope:** memory/context, Skills/plugins, long-running creator sessions, chat-to-artifact workflows, copy/paste construction history, restart/fork semantics, and DOCX/PDF reproducibility.
 
 ## Executive finding
 
-The fresh creator-workflow shift is that context is becoming an explicitly managed runtime object rather than an invisible by-product of a long conversation.
+The strongest fresh change in this scan is not another file-export option. It is the conversion of **active context into an explicitly managed runtime state**.
 
-OpenAI's 3 September 2026 Codex CLI release adds an experimental context-management configuration for eligible ChatGPT-backed Codex sessions. When enabled, it activates:
+Codex 0.153.0 adds a disabled-by-default `features.context_management.experimental_mode`. When enabled for eligible ChatGPT Plus, Pro, or Pro Lite sessions using the Codex backend, it activates:
 
 ```text
 TOKEN-BUDGET CONTEXT
@@ -18,80 +18,54 @@ TOKEN-BUDGET CONTEXT
 + new_context TOOL
 ```
 
-At the same time, the release documents selective persistence across context-destroying or context-rebuilding events:
+At the same time, other states can survive context-changing events:
 
 ```text
 GUARDIAN REVIEW HISTORY
--> SURVIVES COMPACTION
--> SURVIVES RESTARTS
--> SURVIVES USER-CREATED FORKS
+-> survives compaction
+-> survives restarts
+-> survives user-created forks
 
 TUI DRAFTS + TRANSCRIPTS
--> SURVIVE APP-SERVER DISCONNECT / RECONNECT
+-> survive app-server disconnect / reconnect
 
 PASTED CONTENT + ATTACHMENTS
--> SURVIVE COMPOSER UNDO / REDO
+-> survive local undo / redo
 ```
 
-This creates a crucial Deep Drift distinction:
+Deep Drift must therefore stop treating a visible thread as a single stable context object.
 
 ```text
-CONTEXT COMPRESSED
-!= CONTEXT LOST
+VISIBLE THREAD
+!= ACTIVE MODEL CONTEXT
 
-CONTEXT REBUILT
-!= ORIGINAL CONTEXT RESTORED
+ORIGINAL HISTORY
+!= HISTORY NOTES
+!= RECONSTITUTED CONTEXT
 
-PROCEDURAL STATE SURVIVES
-!= SEMANTIC HISTORY SURVIVES IDENTICALLY
+CONTEXT COMPACTED
+!= ALL PROCEDURAL STATE LOST
 
 FORK
-!= CLEAN-SLATE RUN
+!= CLEAN PROCEDURAL SLATE
 
-RESTART
-!= ZERO-STATE EXECUTION
+RECONNECT
+!= RETRY
 
-new_context
-!= NEW ACCOUNT OR NEW PROJECT
+SAME THREAD ID
+!= SAME RUNTIME STATE
 ```
 
-The research object is the **state survival map across a context transition**.
+## 1. Context is now an explicit transitionable object
 
-## New node
-
-### Context-Compaction and Procedural-State Persistence Fidelity (CCPSF)
-
-Minimum state model:
-
-```text
-thread_id
-context_mode
-context_budget
-history_note_state
-compaction_event
-new_context_event
-restart_event
-fork_event
-disconnect_event
-reconnect_event
-approval_state
-guardian_history_state
-draft_state
-transcript_state
-attachment_state
-plugin_marketplace_state
-post_transition_output
-```
-
-## 1. Context can now be explicitly replaced
-
-The experimental `new_context` tool is significant because it turns context transition into an explicit runtime operation.
+The experimental `new_context` tool makes context replacement a first-class runtime operation rather than only an invisible side effect of long conversations.
 
 The old mental model was:
 
 ```text
 LONG THREAD
--> MODEL EVENTUALLY FORGETS / COMPACTS
+-> context fills
+-> platform silently compresses or forgets
 ```
 
 The emerging model is:
@@ -100,141 +74,202 @@ The emerging model is:
 THREAD
 -> TOKEN BUDGET
 -> HISTORY NOTES
--> EXPLICIT new_context
+-> new_context
 -> CONTINUED EXECUTION
 ```
 
-Deep Drift must therefore distinguish **conversation continuity** from **context continuity**. A thread may remain visually continuous while the active model context has changed materially.
+For Deep Drift, **conversation continuity and context continuity are now separate variables**.
+
+A thread can remain visually continuous while the model's operative representation of its past changes materially.
 
 ## 2. History notes are a reconstitution layer
 
-History notes are not the original transcript. They are a representation of prior state used to sustain future work within a constrained context budget.
+History notes are not equivalent to the original transcript. They are a transformed representation used to sustain future work under a bounded context budget.
 
 ```text
-ORIGINAL HISTORY
-!= HISTORY NOTES
-!= ACTIVE CONTEXT
+ORIGINAL TRANSCRIPT
+      |
+      v
+HISTORY-NOTE REPRESENTATION
+      |
+      v
+ACTIVE POST-TRANSITION CONTEXT
 ```
 
-This extends MPSRF's portability logic into an intra-run setting: the platform can reconstruct usable context from a transformed representation without preserving every prior token verbatim.
+This extends Deep Drift's memory-portability logic into a single running session: the system can preserve useful continuity while changing the representation that carries that continuity.
 
-For Deep Drift, any visible or inferable compaction event should record pre-compaction state, compaction trigger, history-note representation, post-compaction state, known omissions, and behavioral drift.
+For reproducibility, a material context transition should record:
 
-## 3. Procedural history can survive semantic compression
+- pre-transition thread state;
+- transition trigger;
+- history-note or summary representation where observable;
+- post-transition context state;
+- known omissions;
+- downstream behavioral drift.
 
-The same release states that Guardian review history survives compaction, restarts, and user-created forks.
+## 3. Procedural state can survive semantic compaction
 
-That means a safety/approval procedure can remain causally active after the conversational substrate has been compressed or reconstructed.
+OpenAI's official release says Guardian review history survives **compaction, restarts, and user-created forks**, while respecting rollback boundaries and isolating subagent history.
+
+This creates another causal channel:
 
 ```text
-PROCEDURAL MEMORY
-!= SEMANTIC MEMORY
+SEMANTIC HISTORY
+!= PROCEDURAL REVIEW HISTORY
 ```
 
-A future action may be influenced by a retained approval/review state whose originating conversational detail is no longer present in full.
+A future action may therefore be influenced by retained approval/review state even when the original semantic history has been compressed or rebuilt.
 
-## 4. Forks can inherit procedural ancestry
+Deep Drift must version procedural memory separately from semantic memory.
 
-A user-created fork is normally tempting to treat as a new branch from a known message. But if approval or Guardian history survives into that fork, the fork is not procedurally clean.
+## 4. Forks can inherit hidden ancestry
 
-Deep Drift must preserve parent thread, fork point, inherited semantic state, inherited procedural state, and new branch state.
+A user-created fork is tempting to treat as a fresh branch from a visible message. But if procedural review history survives into that branch, the fork is not procedurally clean.
 
-## 5. Reconnect can preserve drafts and transcripts
+A correct fork record becomes:
 
-Codex CLI 0.153.0 documents reconnection after external app-server connection loss while preserving drafts and transcripts and pausing uncertain or queued submissions for review.
+```text
+PARENT THREAD
+   |
+   +--> FORK POINT
+           |
+           +--> inherited semantic state
+           +--> inherited procedural state
+           +--> branch-local state
+```
 
-This is different from ordinary retry behavior. CRFPF established that failed runs need branch-level provenance. CCPSF adds a narrower distinction: a transport/app-server interruption can reconnect while preserving working state.
+A branch can inherit more than what the human sees in copied conversational text.
 
-Therefore the archive should distinguish `retry`, `restart`, `resume`, and `reconnect` instead of treating all recovery as one event class.
+## 5. Reconnect is not retry
 
-## 6. Queued submissions can survive but remain uncertain
+Codex 0.153.0 also documents TUI reconnection after an external app-server connection drop while preserving drafts and transcripts. Uncertain or queued submissions remain paused for review.
 
-The release notes that uncertain or queued submissions stay paused for review after reconnect.
+That gives Deep Drift four recovery classes that must not be collapsed:
 
-That creates an intermediate state:
+```text
+RECONNECT
+RESUME
+RESTART
+RETRY
+```
+
+A reconnect may preserve the working session. A retry may create a new causal branch. Those histories are not equivalent.
+
+## 6. Queued input can exist without confirmed execution
+
+After reconnect, an input may be preserved while its execution status remains uncertain.
 
 ```text
 INPUT EXISTS
-+ EXECUTION STATUS UNCERTAIN
++ SUBMISSION STATUS UNCERTAIN
 + HUMAN REVIEW REQUIRED
 ```
 
-Deep Drift should record `drafted`, `queued`, `submitted`, `execution_confirmed`, `execution_uncertain`, and `cancelled` as separate states.
+So creator provenance must distinguish:
 
-## 7. Paste and attachment history now has local undo/redo persistence
+```text
+DRAFTED
+QUEUED
+SUBMITTED
+EXECUTION CONFIRMED
+EXECUTION UNCERTAIN
+CANCELLED
+```
 
-The same release adds Vim undo and redo while preserving complete drafts, including pasted content and attachments.
+Otherwise an archived prompt can be falsely treated as a prompt the model definitely received.
 
-A pasted block can now participate in an editable local history:
+## 7. Copy/paste now participates in local input history
+
+Codex 0.153.0 adds Vim undo/redo while preserving complete drafts, including pasted content and attachments.
+
+The composer itself is therefore becoming a small versioned creator surface:
 
 ```text
 PASTE
 -> EDIT
 -> UNDO
 -> REDO
+-> SUBMIT
 ```
 
-while remaining bundled with attached artifacts.
+The final submitted prompt may not reveal the construction path that created it.
 
-Therefore current composer content is not the complete input-construction history. The composer itself is becoming a versioned creator surface.
+This does not make every keystroke important. It does mean that large pasted evidence, attachments, and materially reversed edits may matter when reconstructing a research run.
 
-## 8. Remote plugin marketplaces turn procedural dependencies into mutable runtime state
+## 8. Plugin marketplaces are now mutable CLI runtime state
 
-Codex CLI 0.153.0 can list, install, and remove plugins from remote marketplaces.
+The same release allows the plugin CLI to **list, install, and remove plugins from remote marketplaces**.
 
-This extends prior OpenAI GitHub-synced plugin marketplace behavior from workspace administration into CLI-level procedural state.
-
-A run can therefore depend on:
+A thread can therefore experience procedural-dependency changes without changing its visible identity:
 
 ```text
-REMOTE MARKETPLACE
--> INSTALLED PLUGIN VERSION
--> SKILL / TOOL AVAILABILITY
--> EXECUTION
+THREAD START
+-> PLUGIN INVENTORY A
+-> CONTEXT TRANSITION
+-> REMOTE PLUGIN CHANGE
+-> PLUGIN INVENTORY B
+-> CONTINUE THREAD
 ```
 
-The marketplace state is now part of reproducibility.
-
-## 9. Context transitions and plugin transitions can intersect
-
-The release is especially important because context management and plugin-marketplace mutability arrive in the same runtime.
-
-A continued thread may experience both a context transition and a procedural dependency transition without changing its visible thread identity.
-
-The dangerous assumption is:
+For Deep Drift:
 
 ```text
 SAME THREAD ID
-= SAME RUNTIME
+!= SAME TOOL / SKILL INVENTORY
 ```
 
-That assumption is no longer defensible.
+The runtime record should preserve marketplace source, plugin identity, installation/removal time, version or revision where visible, and run-time availability.
+
+## 9. Why this matters for DOCX/PDF and creator artifacts
+
+A final report can be produced after several invisible runtime transitions:
+
+```text
+RESEARCH THREAD
+-> CONTEXT COMPACTION
+-> HISTORY NOTES
+-> PLUGIN CHANGE
+-> RECONNECT
+-> CONTINUED ANALYSIS
+-> DOCX
+-> PDF
+```
+
+The DOCX/PDF cannot tell us:
+
+- which context representation was active when a claim was produced;
+- whether approval/review history survived a compaction;
+- whether the plugin inventory changed mid-thread;
+- whether a reconnect preserved a draft or a retry regenerated it;
+- whether the final prompt was reconstructed after undo/redo.
+
+Therefore the artifact must be linked to the **context-transition ledger**, not only to the chat transcript.
 
 ## Fresh category scan
 
 | Area | Fresh status | Deep Drift implication |
 |---|---|---|
-| Memory/context | Major fresh delta | Explicit context budgeting, history notes, and `new_context` create versioned intra-thread context state |
-| Skills/plugins | Major fresh delta | Remote marketplaces can be managed from Codex CLI, changing procedural availability |
-| Mini-app builders | No stronger same-day delta found | Prior Sites/Design/Agent Builder nodes remain current |
-| Chat-to-document | Indirect but material | Long-running artifact creation can continue after compaction/reconnect with transformed context |
-| DOCX/PDF | Downstream effect | A final file may be produced after one or more context transitions not visible in the file |
-| Copy-paste/export | Material | Pasted content and attachments now survive local undo/redo history in the composer |
-| Creator workflow | Major | Runtime continuity is becoming a selective state-preservation problem rather than simple transcript continuity |
+| Memory / context | **Major fresh delta** | Active context can be budgeted, summarized into history notes, and explicitly replaced with `new_context` |
+| Skills / plugins | **Major fresh delta** | Remote plugin marketplaces can be managed from Codex CLI, changing procedural availability |
+| Mini-app builders | No stronger same-day delta found | Existing Sites/agent/design nodes remain current |
+| Chat-to-document | Material downstream effect | Long creator runs can cross context transitions before document materialization |
+| DOCX/PDF | Material provenance effect | Final files can outlive and flatten multiple context/runtime transitions |
+| Copy-paste/export | Material | Pasted content and attachments survive local undo/redo history |
+| Creator workflow | **Major** | Runtime continuity is now selective state persistence, not simple transcript continuity |
 
 ## New failure classes
 
 ### Thread-Equals-Context Fallacy
-Assuming the visible conversation thread proves a stable active context.
+Assuming the visible conversation thread proves a stable active model context.
 
 ### Compaction-Equals-Loss Fallacy
-Assuming all prior state disappears when context is compacted.
+Assuming every prior state disappears when semantic context is compacted.
 
-### Compaction-Equals-Identity Fallacy
-Assuming compressed/reconstituted context is semantically identical to the original history.
+### Reconstitution-Equals-Identity Fallacy
+Assuming history notes or reconstructed context are semantically identical to the original transcript.
 
 ### Fork-Equals-Clean-State Error
-Ignoring procedural review or approval history inherited into a fork.
+Ignoring inherited procedural review or approval state in a user-created fork.
 
 ### Reconnect-Equals-Retry Error
 Treating state-preserving reconnection as a fresh execution branch.
@@ -243,31 +278,37 @@ Treating state-preserving reconnection as a fresh execution branch.
 Assuming a queued or uncertain submission definitely reached model execution.
 
 ### Plugin-Inventory Constancy Fallacy
-Assuming tool/Skill availability is constant across the life of a thread.
+Assuming Skill/tool availability is constant over the life of a thread.
 
-## Deep Drift benchmark additions
+## Benchmark additions
 
-**Context Transition Fidelity (CTF)** — Can explicit and implicit context transitions be reconstructed over the life of a thread?
+**Context Transition Fidelity (CTF)**  
+Can explicit and implicit context transitions be reconstructed over the life of a thread?
 
-**History Reconstitution Fidelity (HRF)** — Can original transcript, history-note representation, and active post-compaction context remain distinct?
+**History Reconstitution Fidelity (HRF)**  
+Can original transcript, history-note representation, and active post-transition context remain distinct?
 
-**Procedural-State Survival Fidelity (PSSF)** — Can approvals, Guardian history, and other procedural state be tracked independently from semantic history?
+**Procedural-State Survival Fidelity (PSSF)**  
+Can approvals, Guardian history, and other procedural state be tracked independently from semantic history?
 
-**Fork Inheritance Fidelity (FIF)** — Can inherited state in a branch be separated from branch-local state?
+**Fork Inheritance Fidelity (FIF)**  
+Can inherited state in a branch be separated from branch-local state?
 
-**Reconnect Continuity Fidelity (RCF)** — Can reconnect/resume events be distinguished from retry/restart branches?
+**Reconnect Continuity Fidelity (RCF)**  
+Can reconnect/resume events be distinguished from retry/restart branches?
 
-**Plugin-State Continuity Fidelity (PSCF)** — Can marketplace and plugin inventory changes be associated with the exact runs they affected?
+**Plugin-State Continuity Fidelity (PSCF)**  
+Can marketplace and plugin inventory changes be associated with the exact runs they affected?
 
 ## DRPA-1.0 protocol additions
 
 ### CONTEXT-TRANSITION RULE
 
-> When an AI creator runtime compacts, summarizes, replaces, or explicitly resets active context while preserving the surrounding thread or task identity, the transition must be logged as a provenance boundary. Preserve the context-management mode, trigger, pre-transition thread state, any history-note or summary representation, explicit `new_context` event where applicable, post-transition state, known omissions, inherited procedural state, and downstream outputs. Visual continuity of a thread must never be treated as proof of contextual identity.
+> When an AI creator runtime compacts, summarizes, replaces, or explicitly resets active context while preserving the surrounding thread or task identity, the transition must be logged as a provenance boundary. Preserve the context-management mode, trigger, pre-transition thread state, any history-note or summary representation, explicit context-reset event where applicable, post-transition state, known omissions, inherited procedural state, and downstream outputs. Visual continuity of a thread must never be treated as proof of contextual identity.
 
 ### PROCEDURAL-STATE SURVIVAL RULE
 
-> Approval history, safety review state, permissions, plugin availability, queued-input state, and other procedural dependencies must be versioned separately from semantic conversation history. When such state survives compaction, restart, fork, or reconnect, preserve the survival event and scope. A branch or resumed session must never be treated as a clean procedural slate merely because its active semantic context was rebuilt.
+> Approval history, safety-review state, permissions, plugin availability, queued-input state, and other procedural dependencies must be versioned separately from semantic conversation history. When such state survives compaction, restart, fork, or reconnect, preserve the survival event and scope. A branch or resumed session must never be treated as a clean procedural slate merely because its active semantic context was rebuilt.
 
 ### PLUGIN-INVENTORY TRANSITION RULE
 
@@ -328,27 +369,31 @@ Operationally:
 
 ## Broader platform scan
 
-No stronger same-day first-party delta was found in Anthropic, Google Workspace, or Microsoft 365 for the specific memory/Skills/export categories than the nodes already logged earlier on 3 September. Anthropic's latest platform release remains 1 September 2026 and is model-focused. Google's strongest recent creator deltas remain the 2 September Workspace changes already captured in CMATF and CSPIF. Microsoft's current creator changes remain broad but the relevant Page, native Office, agent, and connector transitions are already represented in CPATF/OHSEF.
+In this 3 September scan, I did not find a stronger same-day first-party delta in Anthropic, Google Workspace, or Microsoft 365 for these categories than the nodes already logged.
 
-The new OpenAI Codex 0.153.0 release is distinct because it exposes **context management itself as mutable runtime machinery** while simultaneously preserving selected procedural state across transformations.
+Google's 2 September expansion of persistent custom instructions across Drive, Chat, Slides, Sheets, and Gmail remains important because standing instructions are another hidden causal layer, but Deep Drift already captures that as cross-surface instruction state.
+
+Anthropic's latest release notes still foreground its recent cloud-Cowork memory and editable memory topics; its legacy-memory migration remains an active deadline issue already captured by MMBESF.
+
+The OpenAI Codex 0.153.0 change is distinct because it exposes **intra-thread context transformation plus selective procedural-state survival** inside the same running creator environment.
 
 ## Sources
 
-1. OpenAI, **ChatGPT & Codex changelog - Codex CLI 0.153.0**, 3 September 2026. Documents experimental context management with token-budget context, history notes, and `new_context`; persistence of Guardian history across compaction/restarts/forks; reconnection preserving drafts/transcripts; paste/attachment-aware undo/redo; and remote plugin marketplace management.  
-   https://learn.chatgpt.com/docs/changelog
+1. **OpenAI Codex 0.153.0 official GitHub release**, published 3 September 2026. Release notes document Vim undo/redo preserving pasted content and attachments; remote plugin marketplace management; app-server reconnect preserving drafts and transcripts; Guardian review history surviving compaction/restarts/forks; and experimental context management with token-budget context, history notes, and `new_context`.  
+   https://github.com/openai/codex/releases/tag/rust-v0.153.0
 
-2. OpenAI, **ChatGPT Release Notes**, checked 3 September 2026. Main ChatGPT release notes remain at 1 September for the latest general ChatGPT entry; the 3 September delta is in the ChatGPT & Codex changelog.  
-   https://help.openai.com/en/articles/6825453-chatgpt-release-notes
+2. **Google Workspace Updates**, “Custom instructions for Gemini in Workspace now available in more apps,” 2 September 2026.  
+   https://workspaceupdates.googleblog.com/2026/09/custom-instructions-for-gemini-in-Workspace-now-available-in-more-apps.html
 
-3. Anthropic, **Claude Platform release notes**, checked 3 September 2026. Latest platform release remains 1 September 2026 and is primarily a model release.  
-   https://docs.anthropic.com/en/release-notes/api
+3. **Anthropic Help Center**, Claude release notes, checked 3 September 2026.  
+   https://support.claude.com/en/articles/12138966-release-notes
 
-4. Microsoft Learn, **Release Notes for Microsoft 365 Copilot**, checked 3 September 2026. Current creator, agent, Page, native-file, and connector changes remain complementary to prior Deep Drift nodes.  
-   https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes
+4. **Anthropic Help Center**, “Use Claude’s chat search and memory to build on previous context,” checked 3 September 2026.  
+   https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
 
 ## Research status
 
-**Node status:** New.  
-**Duplicate check:** No matching Deep Drift research-log entry was found for explicit intra-thread context replacement, history-note reconstitution, procedural-state survival across compaction/forks/restarts, and remote plugin inventory mutation as one provenance problem.  
-**Relationship to prior nodes:** Extends MMBESF (memory boundaries), CRFPF (failure/recovery attempt graphs), MPSRF (reconstitution fidelity), and OHSEF (orchestration/procedural dependencies). CCPSF focuses specifically on selective state survival when active context itself is compressed, rebuilt, replaced, forked, or reconnected.  
-**Freshness:** Primary implementation released by OpenAI on 3 September 2026.
+**Node status:** Updated and source-verified against the OpenAI 0.153.0 release; existing repository path retained to avoid duplicate-node inflation.  
+**Relationship to prior nodes:** Extends MMBESF (memory boundaries), MPSRF (semantic reconstitution), OHSEF (orchestration state), and CRFPF (failure/recovery branches). CCPSF specifically tracks what survives and what changes when the active context itself is compacted, rebuilt, replaced, forked, or reconnected.  
+**Evidence strength:** High for the OpenAI implementation because the key claims come from OpenAI's official Codex GitHub release.  
+**Freshness:** Primary implementation published 3 September 2026.
