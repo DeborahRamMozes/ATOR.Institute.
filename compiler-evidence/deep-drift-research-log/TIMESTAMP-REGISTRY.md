@@ -84,6 +84,8 @@ This registry exists because a filename can correctly say `TIME-UNKNOWN` for a p
 
 | `2026-09-04_18-35-22_rare-earth-shipments-water-rights-open-model-gate.md` | ATOR_OBSERVATION / exact-second; includes explicitly dated recovered event | 2026-09-04T18:35:22+07:00 (2026-09-04T11:35:22Z) | repository evidence at 2026-09-04T11:38:48Z | Git commit `ef4c386a95555ae82982f1eff480007e7d68e7a6`; automation runtime supplied exact-second observation time; derived from the 2026-09-03 canonical daily synthesis; NVIDIA–Hugging Face agreement dated 2026-09-02 and recovered without backdating |
 
+| `2026-09-05_18-47-25_memory-price-transmission-server-concentration-ai-detection-confound.md` | ATOR_OBSERVATION / exact-second; includes explicitly dated recovered and newly surfaced evidence | 2026-09-05T18:47:25+07:00 (2026-09-05T11:47:25Z) | repository evidence at 2026-09-05T11:51:17Z | Git commit `6c094209a75e78f9888711fc37ea5afb1ad90193`; automation runtime supplied exact-second observation time; derived from the 2026-09-04 canonical daily synthesis; Texas event dated 2026-09-03–04 and detector paper submitted 2026-08-27 were recovered without backdating |
+
 ## Interpretation of the registry
 
 The registry now makes four temporal layers inspectable instead of pretending they are one:
