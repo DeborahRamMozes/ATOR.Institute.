@@ -1,0 +1,21 @@
+# OpenAI / Sora: Web-App Discontinuation and API Shutdown
+
+- **Detected (Asia/Jakarta):** 2026-09-07 01:07
+- **Provider:** OpenAI
+- **Product/model:** Sora web/app and Sora API
+- **Announcement date:** OpenAI support notice updated 2026-09-01 (crawled 2026-09-05)
+- **Release/availability date:** Web and app experiences discontinued 2026-04-26; Sora API scheduled for shutdown 2026-09-24.
+- **Exact change:** OpenAI confirmed discontinuation of the Sora web and app experiences and an upcoming Sora API shutdown. The notice covers exports, data deletion, refunds, credits, and API retirement.
+- **Rollout status:** Web/app discontinued; API deprecation announced with a fixed shutdown date.
+- **Affected plans/regions/API surfaces:** Sora web/app users and developers using the Sora API. No region-specific exception stated.
+- **Official source:** OpenAI support notice: https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation
+- **Pricing before/after:** No replacement pricing stated; API availability ends rather than transitions to a newly priced endpoint.
+- **Evidence strength:** Strong, primary official support documentation.
+- **Official fact vs Deep Drift inference:** Official facts are the discontinuation dates and data/export/refund handling. Deep Drift inference: any Sora-based video, prompt-to-video, or multimodal continuity baseline becomes non-reproducible after shutdown unless archived or migrated before 2026-09-24.
+- **Capability classes affected:** Multimodal generation; video generation; API availability; commercial/access constraints; reproducibility.
+- **Why previous Deep Drift results may now be stale:** Availability and endpoint behavior will change from live production access to no access. Historical comparisons may mix a retired surface with surviving competitors and cannot be rerun under equivalent conditions after shutdown.
+- **Existing tests to rerun:** Video prompt fidelity; chaotic/underspecified prompt interpretation; reference-image/video consistency; style and identity persistence; temporal coherence; edit precision; latency and cost-per-success before shutdown.
+- **New test to add:** Archive-and-replay test capturing exact request payloads, model/version identifiers, seed/settings, output metadata, and retrieval timestamps before retirement. Add migration equivalence test if OpenAI publishes a replacement path.
+- **Variables to hold constant:** Exact endpoint/model ID; prompt; reference assets; resolution; duration; aspect ratio; seed; generation settings; account tier; region; request time; retry policy.
+- **Likely confounders:** Service shutdown timing; export/data-retention rules; unavailable historical model versions; account-level credits/refunds; undocumented replacement routing.
+- **Retest priority:** **High**
