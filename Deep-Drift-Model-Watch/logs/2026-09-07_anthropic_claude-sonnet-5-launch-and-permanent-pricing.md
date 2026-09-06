@@ -1,0 +1,21 @@
+# Anthropic / Claude Sonnet 5: Major Agentic Model Launch and Permanent Introductory Pricing
+
+- **Detected (Asia/Jakarta):** 2026-09-07 01:07
+- **Provider:** Anthropic
+- **Product/model:** Claude Sonnet 5 (`claude-sonnet-5`)
+- **Announcement date:** 2026-06-30
+- **Release/availability date:** 2026-06-30; pricing clarification updated 2026-08-10
+- **Exact change:** Anthropic launched Sonnet 5 as a materially more agentic model than Sonnet 4.6, with stronger reasoning, tool use, coding, knowledge work, sustained autonomous execution, and improved safety in agentic contexts. Rate limits were increased across Chat, Cowork, Claude Code, and the Claude Platform to support higher-effort usage. The initial price of $2/M input and $10/M output was later made permanent; the previously announced $3/$15 pricing step-up no longer applies.
+- **Rollout status:** Generally available.
+- **Affected plans/regions/API surfaces:** Available across all Claude plans; default model for Free and Pro, available to Max, Team, and Enterprise. API identifier `claude-sonnet-5`. Cyber Verification Program availability on native Claude Platform, AWS, and Microsoft Foundry; Google Vertex noted as coming soon in the announcement. No regional exclusions stated.
+- **Official sources:** Anthropic launch announcement: https://www.anthropic.com/news/claude-sonnet-5
+- **Pricing before/after:** Prior Sonnet 4.6 pricing was higher than Sonnet 5's permanent $2/M input and $10/M output. Anthropic's announced temporary standard price of $3/$15 was cancelled; permanent pricing is $2/$10.
+- **Evidence strength:** Strong, primary official source.
+- **Official fact vs Deep Drift inference:** Official facts are the model launch, capability claims, availability, rate-limit increase, and permanent pricing. Deep Drift inference: comparisons against Sonnet 4.6 and other providers are stale unless rerun under matched effort, rate-limit, and tokenizer conditions.
+- **Capability classes affected:** Reasoning; tool use; coding; agentic execution; reliability; safety; commercial constraints; API economics.
+- **Why previous Deep Drift results may now be stale:** Sonnet 5 narrows the capability gap to Opus-class systems while changing cost-performance and rate-limit conditions. Its updated tokenizer can map the same input to roughly 1.0–1.35x more tokens depending on content, which affects cost normalization and context behavior.
+- **Existing tests to rerun:** Long-context stability; multi-step tool execution; coding/debugging; autonomous follow-through; cross-tool continuity; agent reliability; cost-per-success; rate-limit stress; safety/refusal consistency.
+- **New test to add:** Effort-sweep test comparing low/medium/high/xhigh; tokenizer-normalized cost test on identical prompts; Sonnet 4.6 vs Sonnet 5 under equal effective token budgets; Cyber Verification access-gated comparison.
+- **Variables to hold constant:** Exact model ID; prompt; tool schema; effort level; max output; account tier; region; concurrency; retry policy; context documents; temperature/sampling controls where available.
+- **Likely confounders:** Updated tokenizer; provider-side routing; plan-specific quotas; dynamic rate limits; benchmark harness changes; cyber-safety gating; API versus native Claude wrappers.
+- **Retest priority:** **Critical**
