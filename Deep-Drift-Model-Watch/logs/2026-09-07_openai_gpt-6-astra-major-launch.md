@@ -1,0 +1,26 @@
+# OpenAI GPT-6 Astra: major flagship launch
+
+- **Detected time (Asia/Jakarta):** 2026-09-07 13:24:53 +07:00
+- **Provider:** OpenAI
+- **Product/model:** GPT-6 Astra
+- **Exact change:** OpenAI announced GPT-6 Astra as a new flagship model with major improvements in computer use, browsing, software engineering, cybersecurity, science, and professional work. OpenAI states Astra is initially available to a limited set of organizations and is rolling out to ChatGPT Plus, Pro, Business, and Enterprise users, as well as the OpenAI API, Microsoft Azure, and AWS Bedrock.
+- **Announcement date:** 2026-09-03
+- **Release/availability date:** Initial limited availability on 2026-09-03; broader rollout over the following days.
+- **Rollout status:** Limited organizations first; staged broader rollout.
+- **Affected plans/regions/API surfaces:** ChatGPT Plus, Pro, Business, Enterprise; OpenAI API; Azure; AWS Bedrock. Regional exclusions not stated in the official announcement.
+- **Official sources:**
+  - https://openai.com/index/gpt-6-astra/
+  - https://openai.com/index/safety-overview-gpt-6-astra/
+  - https://openai.com/index/path-to-astra/
+- **Pricing before/after:** No new pricing stated in the launch announcement; verify API and plan pricing before cost-normalized comparison.
+- **Evidence strength:** High for launch, availability, and claimed capability scope; medium for comparative capability claims pending independent retest.
+- **Official fact vs Deep Drift inference:**
+  - **Official fact:** New flagship model, staged availability, affected surfaces, and vendor-reported capability/safety claims.
+  - **Deep Drift inference:** Prior GPT-5.6 results may be stale for reasoning, computer use, tool execution, long-horizon agents, cyber capability, and multimodal/visual tasks.
+- **Capability classes affected:** New flagship; reasoning; computer use; browsing; software engineering; agentic execution; cybersecurity; science/professional workflows; reliability/safety robustness.
+- **Why previous Deep Drift results may now be stale:** The model generation, deployment surfaces, tool stack, and safety controls changed. Rankings, failure modes, latency, refusal behavior, and effective cost measured against GPT-5.6 are not safely transferable.
+- **Exact existing tests to rerun:** Full comparative sweep; context + compilation; tool execution; long-running agent reliability; multimodal/image interpretation where Astra is exposed; commercial normalization and access normalization.
+- **New test to add:** Controlled computer-use trajectory test with browser and desktop actions; jailbreak/prompt-injection resilience across longer tool trajectories; visual spatial-placement test using chaotic prompts and reference constraints.
+- **Variables to hold constant:** Prompt set, task order, temperature/settings where exposed, model identifier, account/plan, region, interface/API surface, enabled tools/connectors, concurrency, timeout, retry policy, and evaluation rubric.
+- **Likely confounders:** Staged rollout; hidden model routing; tool/version differences across ChatGPT, API, Azure, and Bedrock; safety-layer changes; quota/rate limits; prompt caching; regional infrastructure variance.
+- **Retest priority:** **Critical**
