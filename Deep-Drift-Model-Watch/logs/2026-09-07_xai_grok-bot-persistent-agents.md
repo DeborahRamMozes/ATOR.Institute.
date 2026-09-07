@@ -1,0 +1,23 @@
+# xAI Grok Bot: persistent agents beyond a single session
+
+- **Detected time (Asia/Jakarta):** 2026-09-07 13:24:53 +07:00
+- **Provider:** xAI
+- **Product/model:** Grok Bot
+- **Exact change:** xAI described Grok Bot as a persistent-agent system that extends beyond a single session through chat history, a Bot roster, persistent presence, an independent computer, and work that can begin without a new prompt. This materially changes continuity and autonomous-agent behavior even without a new base-model launch.
+- **Announcement date:** 2026-09-03
+- **Release/availability date:** Announcement date; rollout/plan availability should be checked separately from the design announcement.
+- **Rollout status:** Confirmed product direction and capability description; exact availability is surface- and plan-dependent. Treat as staged/partially available pending explicit entitlement documentation.
+- **Affected plans/regions/API surfaces:** Grok Bot surfaces, including enterprise and team contexts where enabled; regional matrix not stated in the source.
+- **Official source:** https://x.ai/news/designing-grok-bot
+- **Pricing before/after:** No explicit pricing change stated.
+- **Evidence strength:** High for the stated persistent-agent architecture; medium for broad user availability and production behavior because the announcement does not provide a complete rollout matrix.
+- **Official fact vs Deep Drift inference:**
+  - **Official fact:** xAI describes persistent agents with history, roster/presence, an independent computer, and promptless work initiation.
+  - **Deep Drift inference:** Prior Grok continuity and agent results may understate autonomous persistence, retrieval across sessions, background execution, and state carryover.
+- **Capability classes affected:** Persistent memory/continuity; own-history retrieval; autonomous agents; long-running execution; computer use; task initiation without a prompt; workspace/team collaboration.
+- **Why previous Deep Drift results may now be stale:** A single-session chatbot baseline is not equivalent to a persistent agent with retained state, scheduled/background work, or an independent execution environment. Repeatability and consent boundaries may also differ.
+- **Exact existing tests to rerun:** Memory + continuity; indexing + provenance; tool execution; autonomous multi-step execution; cross-session temporal continuity; plan/access normalization.
+- **New test to add:** Promptless initiation and background-completion test; Bot-roster identity/persistence test; state-recovery test after interruption; permission-revocation and provenance test for actions taken from retained context.
+- **Variables to hold constant:** Bot identity, account/plan, region, workspace membership, tool permissions, prompt corpus, elapsed time, concurrency, notification settings, and retry policy.
+- **Likely confounders:** Product/design announcement versus generally available behavior; hidden scheduling rules; plan gating; regional rollout; background-job quotas; stale versus live memory; connector permission changes; platform outages.
+- **Retest priority:** **Critical**
