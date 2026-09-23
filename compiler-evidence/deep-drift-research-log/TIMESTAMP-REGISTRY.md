@@ -149,3 +149,36 @@ The following recovered nodes were added with source/event dates kept separate f
 | `2026-09-22_TIME-UNKNOWN_anthropic-recursive-self-improvement-performance-update.md` | PROVIDER_PUBLICATION / date-only | 2026-09-18 | 2026-09-23T15:30+07:00 | Anthropic page update; recovery audit clock |
 
 These entries do not claim that every missing day is exhaustively reconstructed. They record verified nodes recovered from the available research stream and make the gap itself auditable.
+
+
+## 2026-09-23 video-based chat timestamp recovery
+
+A video review recovered visible Chat UI timestamps for research updates that had previously been represented only by provider dates, coarse observation times, or later archival times. The video file reviewed was `Tren LLM menuju workflow AI terpadu.mp4`. Visible Chat UI time is treated as the primary timestamp for the corresponding research-update event. Seconds remain unknown because the rendered UI labels provide minute precision only.
+
+| Canonical file | Chat UI timestamp | Precision | Timestamp evidence | Research content recovered |
+|---|---|---|---|---|
+| `2026-08-20_01-46-XX_chat-ui-memory-portability-fidelity.md` | 2026-08-20 01:46 Asia/Jakarta | exact-minute | visible Chat UI label: Thursday 1:46 AM | Claude memory as categorized entries; cross-provider memory import/export; Memory Portability Fidelity |
+| `2026-08-20_03-52-XX_chat-ui-persistent-execution-environment-skill-portability.md` | 2026-08-20 03:52 Asia/Jakarta | exact-minute | visible Chat UI label: Thursday 3:52 AM | persistent execution environment; Work/Plugin workflow convergence; Skill Portability Fidelity |
+| `2026-08-20_15-32-XX_chat-ui-cross-modal-artifact-structural-migration.md` | 2026-08-20 15:32 Asia/Jakarta | exact-minute | visible Chat UI label: Thursday 3:32 PM | Bidirectional Artifact State Fidelity; Cross-Modal Artifact Continuity; Structural Migration Fidelity; chat-to-file baseline |
+| `2026-08-21_20-46-XX_chat-ui-ambient-context-format-neutral-context.md` | 2026-08-21 20:46 Asia/Jakarta | exact-minute | visible Chat UI label: Friday 8:46 PM | Ambient Context Provenance; Shared Artifact Survival; Surface-Asymmetric Context; Format-Neutral Context Fidelity |
+| `2026-08-21_22-49-XX_chat-ui-governance-action-continuity.md` | 2026-08-21 22:49 Asia/Jakarta | exact-minute | visible Chat UI label: Friday 10:49 PM | Google Admin Assist; Governance-Action Continuity |
+| `2026-08-21_23-47-XX_chat-ui-connected-source-mutation-source-visibility.md` | 2026-08-21 23:47 Asia/Jakarta | exact-minute | visible Chat UI label: Friday 11:47 PM | AI-mediated Drive source mutation; Connected-Source Mutation Fidelity; Source-Visibility Provenance |
+| `2026-08-22_14-45-XX_chat-ui-snapshot-plugin-inventory-drift.md` | 2026-08-22 14:45 Asia/Jakarta | exact-minute | visible Chat UI label: Saturday 2:45 PM | Snapshot Provenance Fidelity; Plugin Inventory Drift |
+| `2026-08-23_01-48-XX_chat-ui-collaborative-sites-provenance.md` | 2026-08-23 01:48 Asia/Jakarta | exact-minute | visible Chat UI label: Yesterday 1:48 AM, with recording date established as 2026-08-24 | ChatGPT Sites co-editing; Collaborative Artifact Provenance Fidelity; live-data/version relationship |
+| `2026-08-23_03-44-XX_chat-ui-approval-state-repository-action.md` | 2026-08-23 03:44 Asia/Jakarta | exact-minute | visible Chat UI label: Yesterday 3:44 AM, with recording date established as 2026-08-24 | Apple Messages approval state; Approval-State Continuity; GitLab/Codex repository action; Repository-Action Provenance Fidelity |
+
+### Chronology correction
+
+The previously existing `2026-08-23_01-52-XX_chatgpt-sites-collaborative-artifact-provenance.md` remains valid as a later ATØR observation/archive event at 01:52. It does not replace the recovered Chat UI event at 01:48. The four temporal layers remain distinct:
+
+```
+PROVIDER / EVENT TIME
+!=
+CHAT UI TIME
+!=
+ATOR OBSERVATION TIME
+!=
+GIT ARCHIVAL TIME
+```
+
+The video therefore resolves several previously false `TIME-UNKNOWN` assumptions at the **research-update clock** without changing the underlying provider-event dates. No seconds have been inferred.
