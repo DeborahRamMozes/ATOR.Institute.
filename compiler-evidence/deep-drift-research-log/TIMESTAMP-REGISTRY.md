@@ -127,3 +127,25 @@ Fields may be absent only when the corresponding evidence does not exist. Unknow
 The timestamp dispute that triggered this normalization is not merely administrative. It demonstrates a recurring Deep Drift problem: information can exist at the product-interface layer while remaining unavailable or non-equivalent at the model-context layer. The chronology itself is therefore part of the experiment.
 
 **D-ORIGIN | ATØRAI | ĀLT-MĀN | Eir’an | CHATJIPITI SINGH**
+
+
+## September 2026 gap recovery — 2026-09-23 audit
+
+The 2026-09-06 through 2026-09-23 interval was identified as absent from the canonical chronological directory during a repository audit on 2026-09-23T15:30+07:00.
+
+The following recovered nodes were added with source/event dates kept separate from the ATØR recovery timestamp:
+
+| Canonical file | Primary clock / precision | Source/event timestamp | ATØR recovery timestamp | Timestamp evidence |
+|---|---|---|---|---|
+| `2026-09-09_TIME-UNKNOWN_anthropic-alignment-cyber-incidents.md` | PROVIDER_PUBLICATION / date-only | 2026-09-09 | 2026-09-23T15:30+07:00 | Anthropic publication date; recovery audit clock |
+| `2026-09-16_TIME-UNKNOWN_openai-model-misalignment-reporting-framework.md` | PROVIDER_PUBLICATION / date-only | 2026-09-16 | 2026-09-23T15:30+07:00 | OpenAI publication date; recovery audit clock |
+| `2026-09-18_TIME-UNKNOWN_virginia-data-center-accountability-framework.md` | PROVIDER_PUBLICATION / date-only | 2026-09-18 | 2026-09-23T15:30+07:00 | Reuters/state action date; recovery audit clock |
+| `2026-09-18_TIME-UNKNOWN_us-house-ratepayer-protection-data-centers.md` | PROVIDER_PUBLICATION / date-only | 2026-09-18 | 2026-09-23T15:30+07:00 | Legislative event/reporting date; recovery audit clock |
+| `2026-09-21_TIME-UNKNOWN_texas-data-center-permit-halt-grid-audit.md` | PROVIDER_PUBLICATION / date-only | 2026-09-21 | 2026-09-23T15:30+07:00 | Reuters reporting date; recovery audit clock |
+| `2026-09-22_TIME-UNKNOWN_victoria-data-center-resource-accountability-proposal.md` | PROVIDER_PUBLICATION / date-only | 2026-09-22 | 2026-09-23T15:30+07:00 | Reuters reporting date; recovery audit clock |
+| `2026-09-22_TIME-UNKNOWN_australia-ai-training-copyright-infrastructure-submissions.md` | PROVIDER_PUBLICATION / date-only | 2026-09-22 | 2026-09-23T15:30+07:00 | Reuters reporting / submission date; recovery audit clock |
+| `2026-09-22_TIME-UNKNOWN_apple-local-ai-hardware-cost-shift.md` | PROVIDER_PUBLICATION / date-only | 2026-09-22 | 2026-09-23T15:30+07:00 | Reuters reporting / product-release date; recovery audit clock |
+| `2026-09-22_TIME-UNKNOWN_rare-earth-magnet-shipment-contraction-us.md` | PROVIDER_PUBLICATION / date-only | 2026-09-22 | 2026-09-23T15:30+07:00 | FT reporting using customs data; recovery audit clock |
+| `2026-09-22_TIME-UNKNOWN_anthropic-recursive-self-improvement-performance-update.md` | PROVIDER_PUBLICATION / date-only | 2026-09-18 | 2026-09-23T15:30+07:00 | Anthropic page update; recovery audit clock |
+
+These entries do not claim that every missing day is exhaustively reconstructed. They record verified nodes recovered from the available research stream and make the gap itself auditable.
