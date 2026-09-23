@@ -58,6 +58,18 @@ A multi-element reasoning architecture:
 Cosmotechnical layering systems that structure meaning,
 ethics, metaphysics, and symbolic logic across the entire ecosystem.
 
+### **DAST — Departemen Advokasi Seni, Desain dan L' Tissage Seni-Teknologi**
+**Tagline: Tangan yang bekerja harus punya nama.**
+
+DAST is the advocacy department for art, design, authorship, fair artisan practice, and ethical art-technology provenance.
+
+Its three labs are:
+- Lab Advokasi & Hukum Seni
+- Lab Authorship & Atelier Transparan
+- Lab L' Tissage Seni-Teknologi
+
+DAST documents, protocols, contracts, and case studies live in [`ator-dast/`](ator-dast/).
+
 ---
 
 ## 🔒 Protocols
@@ -88,6 +100,7 @@ THE New alphabetical that create based on Le Tissage x ACLS x Lilit Parasit theo
 - multi-project orchestration  
 - philosophical architecture  
 - synthetic–human co-creation  
+- art, design, and authorship advocacy through DAST
 
 ---
 
