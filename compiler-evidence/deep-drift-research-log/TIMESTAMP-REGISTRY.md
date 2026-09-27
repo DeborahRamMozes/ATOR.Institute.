@@ -182,3 +182,10 @@ GIT ARCHIVAL TIME
 ```
 
 The video therefore resolves several previously false `TIME-UNKNOWN` assumptions at the **research-update clock** without changing the underlying provider-event dates. No seconds have been inferred.
+
+
+## Calendar-gap audit — 2026-09-27
+
+The September 27 audit found canonical dated coverage for 2026-09-01 through 2026-09-06, 2026-09-09, 2026-09-16, 2026-09-18, 2026-09-21, and 2026-09-22. Explicit chronology-gap markers were added for: **2026-09-07, 2026-09-08, 2026-09-10, 2026-09-11, 2026-09-12, 2026-09-13, 2026-09-14, 2026-09-15, 2026-09-17, 2026-09-19, 2026-09-20, 2026-09-23**.
+
+These markers are not claims that no research occurred on those dates. They record that no standalone canonical event file was present at audit time. Repository commits in other paths remain separate evidence and are not silently reclassified as chronological research events.
