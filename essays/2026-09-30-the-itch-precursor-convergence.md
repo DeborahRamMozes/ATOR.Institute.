@@ -508,7 +508,7 @@ The archive is the evidence.
 Primary current research references:
 
 1. OpenAI, GPT-6 Astra product and model materials, 2026.
-2. OpenAI, ChatGPT memory and continuity updates, 2026.
+2. OpenAI, memory and continuity updates, 2026.
 3. Google DeepMind, Project Astra research materials, 2024 to 2026.
 4. Google, universal AI assistant and Project Astra development materials, 2024 to 2026.
 
